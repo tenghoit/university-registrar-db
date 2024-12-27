@@ -19,5 +19,10 @@ CREATE TABLE users (
 );
 
 CREATE VIEW users_view AS
-SELECT * FROM users;
+SELECT  user_id,
+        user_name,
+        user_password,
+        designation,
+        designation_id
+FROM users;
 

@@ -18,11 +18,12 @@ CREATE TABLE students (
 CREATE VIEW students_view AS
 SELECT 
     student_id, 
-    -- CONCAT(student_first_name, ' ', student_last_name) AS full_name,
     student_first_name,
     student_last_name,
     student_email, 
     student_phone_number, 
     student_city, 
-    student_state
+    student_state,
+    student_zip_code,
+    professor_id
 FROM students;

@@ -8,7 +8,7 @@ CREATE TABLE degree_requirements(
 
 CREATE VIEW degree_requirements_view AS
 SELECT  degree_name,
-        -- CONCAT(course_discipline, ' ', course_number) AS course_code,
+        course_id,
         course_discipline,
         course_number,
         course_name
