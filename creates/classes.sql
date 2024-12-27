@@ -96,11 +96,12 @@ RETURN (
 );
 
 
-DROP FUNCTION IF EXISTS get_num_class_by_location_term_time;
-CREATE FUNCTION get_num_class_by_location_term_time(
+DROP FUNCTION IF EXISTS has_location_conflict;
+CREATE FUNCTION has_location_conflict(
     building_name_input VARCHAR(64), 
     room_number_input INT, 
     term_id_input INT,
+    class_schedule_id_input INT,
     start_time_input TIME, 
     end_time_input TIME)
 RETURNS INT
@@ -110,6 +111,7 @@ RETURN (
         WHERE   building_name = building_name_input
                 AND room_number = room_number_input
                 AND term_id = term_id_input
+                AND find_class_schedule_conflict(class_schedule_id_input, class_schedule_id) <> 0
                 AND (
                     ((start_time >= start_time_input) AND (start_time <= end_time_input))
                     OR
@@ -117,10 +119,11 @@ RETURN (
                 )             
 );
 
-DROP FUNCTION IF EXISTS get_num_class_by_professor_term_time;
-CREATE FUNCTION get_num_class_by_professor_term_time(
+DROP FUNCTION IF EXISTS has_professor_conflict;
+CREATE FUNCTION has_professor_conflict(
     professor_id_input INT, 
     term_id_input INT,
+    class_schedule_id_input INT,
     start_time_input TIME, 
     end_time_input TIME)
 RETURNS INT
@@ -129,6 +132,7 @@ RETURN (
         FROM    classes
         WHERE   professor_id = professor_id_input
                 AND term_id = term_id_input
+                AND find_class_schedule_conflict(class_schedule_id_input, class_schedule_id) <> 0
                 AND (
                     ((start_time >= start_time_input) AND (start_time <= end_time_input))
                     OR
@@ -142,15 +146,24 @@ CREATE TRIGGER classes_insert
 BEFORE INSERT ON classes FOR EACH ROW
 BEGIN
 
-    -- room conflict
-    SET @location_existing_classes = get_num_class_by_location_term_time(NEW.building_name, NEW.room_number, NEW.term_id, NEW.start_time, NEW.end_time);
-    IF (@location_existing_classes <> 0) THEN
+    -- location conflict
+    SET @location_conflicts = has_location_conflict(NEW.building_name, 
+                                                    NEW.room_number, 
+                                                    NEW.term_id, 
+                                                    NEW.class_schedule_id,
+                                                    NEW.start_time, 
+                                                    NEW.end_time);
+    IF (@location_conflicts <> 0) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class already exists at that location on that time';
     END IF;
 
     -- professor conflict
-    SET @professor_existing_classes = get_num_class_by_professor_term_time(NEW.professor_id, NEW.term_id, NEW.start_time, NEW.end_time);
-    IF (@professor_existing_classes <> 0) THEN
+    SET @professor_conflicts = has_professor_conflict(  NEW.professor_id, 
+                                                        NEW.term_id, 
+                                                        NEW.class_schedule_id,
+                                                        NEW.start_time, 
+                                                        NEW.end_time);
+    IF (@professor_conflicts <> 0) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Professor is already teaching a class on that time';
     END IF;
 
@@ -163,18 +176,27 @@ CREATE TRIGGER classes_update
 BEFORE UPDATE ON classes FOR EACH ROW
 BEGIN
 
-    -- room conflict
-    IF (NEW.building_name <> OLD.building_name) OR (NEW.room_number <> OLD.room_number) THEN
-        SET @location_existing_classes = get_num_class_by_location_term_time(NEW.building_name, NEW.room_number, NEW.term_id, NEW.start_time, NEW.end_time);
-        IF (@location_existing_classes <> 0) THEN
+    -- location conflict
+    IF (NEW.building_name <> OLD.building_name) OR (NEW.room_number <> OLD.room_number) THEN -- check if changed first
+        SET @location_conflicts = has_location_conflict(NEW.building_name, 
+                                                        NEW.room_number, 
+                                                        NEW.term_id, 
+                                                        NEW.class_schedule_id,
+                                                        NEW.start_time, 
+                                                        NEW.end_time);
+        IF (@location_conflicts <> 0) THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class already exists at that location on that time';
         END IF;
     END IF;
 
     -- professor conflict
-    IF (NEW.professor_id <> OLD.professor_id) THEN
-        SET @professor_existing_classes = get_num_class_by_professor_term_time(NEW.professor_id, NEW.term_id, NEW.start_time, NEW.end_time);
-        IF (@professor_existing_classes <> 0) THEN
+    IF (NEW.professor_id <> OLD.professor_id) THEN -- check if changed first
+        SET @professor_conflicts = has_professor_conflict(  NEW.professor_id, 
+                                                            NEW.term_id, 
+                                                            NEW.class_schedule_id,
+                                                            NEW.start_time, 
+                                                            NEW.end_time);
+        IF (@professor_conflicts <> 0) THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Professor is already teaching a class on that time';
         END IF;
     END IF;
