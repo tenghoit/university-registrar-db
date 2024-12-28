@@ -28,7 +28,8 @@ GROUP BY class_schedule_id;
 
 
 CREATE VIEW class_schedule_conflicts_view AS
-SELECT *
+SELECT  cs1.class_schedule_id,
+        cs2.class_schedule_id
 FROM    class_schedules as cs1
         JOIN class_schedules as cs2
         ON cs1.day_letter = cs2.day_letter; -- check if have same day
@@ -40,8 +41,8 @@ RETURNS INT
 RETURN (
 SELECT COUNT(*)
 FROM    class_schedule_conflicts_view
-WHERE   cs1 = class_schedule_id_one_input
-        AND cs2 = class_schedule_id_two_input
+WHERE   cs1.class_schedule_id = class_schedule_id_one_input
+        AND cs2.class_schedule_id = class_schedule_id_two_input
 );
 
 

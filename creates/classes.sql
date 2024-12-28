@@ -24,20 +24,18 @@ CREATE TABLE classes (
 
 CREATE VIEW classes_view AS
 SELECT  class_id, 
+        course_id
         crs.course_discipline AS course_discipline,
         crs.course_number AS course_number,
         cls.section AS section,
         crs.course_name AS course_name,
-        -- CONCAT(professor_first_name, ' ', professor_last_name) AS professor_name, 
         professor_first_name,
         professor_last_name,
         building_name,
         room_number,
         class_schedule,
-        -- CONCAT(start_time, ' ', end_time) AS meeting_times,
         start_time,
         end_time,
-        -- CONCAT(term_start_date, ' - ', term_end_date) AS term, 
         term_start_date,
         term_end_date,
         class_max_capacity,
