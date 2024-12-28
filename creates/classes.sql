@@ -138,7 +138,7 @@ RETURN (
                 )             
 );
 
-
+ 
 DELIMITER $$
 CREATE TRIGGER classes_insert
 BEFORE INSERT ON classes FOR EACH ROW
