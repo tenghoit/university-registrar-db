@@ -1,4 +1,4 @@
-INSERT INTO meeting_days (meeting_days_id, day_letter)
+INSERT INTO class_schedules (class_schedule_id, day_letter)
 VALUES  (1, "M"), -- single day schedules
         (2, "T"),
         (3, "W"),

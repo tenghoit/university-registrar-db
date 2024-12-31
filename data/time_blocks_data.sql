@@ -1,4 +1,4 @@
-INSERT INTO meeting_times (time_start, time_end)
+INSERT INTO time_blocks (start_time, end_time)
 VALUES  ("08:00:00", "09:00:00"),
         ("09:10:00", "10:10:00"),
         ("10:20:00", "11:20:00"),

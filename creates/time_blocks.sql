@@ -22,11 +22,11 @@ RETURNS INT
 DETERMINISTIC
 BEGIN
     RETURN (
-        ((start_time_1 >= start_time_2) AND (start_time_1 <= end_time_2))
+        ((start_time_1 >= start_time_2) AND (start_time_1 <= end_time_2)) -- starts during
         OR
-        ((end_time_1 >= start_time_2) AND (end_time_1 <= end_time_2))
+        ((end_time_1 >= start_time_2) AND (end_time_1 <= end_time_2)) -- ends during
         OR
-        ((start_time_1 <= start_time_2) AND (end_time_1 >= end_time_2))
+        ((start_time_1 <= start_time_2) AND (end_time_1 >= end_time_2)) -- complete overlap
     );
 END$$
 DELIMITER ;
