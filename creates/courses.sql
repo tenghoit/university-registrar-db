@@ -19,3 +19,10 @@ SELECT      course_id,
 FROM        courses
 ORDER BY    course_discipline ASC,
             course_number ASC;  
+
+CREATE TABLE labs (
+    course_id           INT,
+    parent_course_id    INT,
+    PRIMARY KEY (course_id),
+    FOREIGN KEY (parent_course_id) REFERENCES courses (course_id) ON DELETE CASCADE
+)

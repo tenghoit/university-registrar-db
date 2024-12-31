@@ -3,6 +3,7 @@ CREATE DATABASE ku_registrar;
 
 USE ku_registrar;
 
+
 -- creates statments
 SOURCE creates/buildings.sql;
 SOURCE creates/locations.sql;
@@ -22,6 +23,7 @@ SOURCE creates/student_class_history.sql;
 SOURCE creates/classes_waitlist.sql;
 SOURCE creates/users.sql;
 
+
 -- test data, order matters here
 SOURCE data/buildings_data.sql;
 SOURCE data/locations_data.sql;
@@ -40,6 +42,7 @@ SOURCE data/classes_data.sql;
 SOURCE data/student_class_history_data.sql;
 SOURCE data/classes_waitlist_data.sql;
 SOURCE data/users_data.sql;
+
 
 -- checking if everythings good
 SELECT * FROM buildings_view;
