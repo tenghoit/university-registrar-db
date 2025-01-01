@@ -1,26 +1,18 @@
 -- Creating the professors table
 CREATE TABLE professors (
-    professor_id INT AUTO_INCREMENT,
-    professor_first_name VARCHAR(50) NOT NULL,
-    professor_last_name VARCHAR(50) NOT NULL,
-    professor_email VARCHAR(100) NOT NULL,
-    professor_phone_number VARCHAR(15),
-    professor_street VARCHAR(100),
-    professor_city VARCHAR(50),
-    professor_state VARCHAR(50),
-    professor_zip_code VARCHAR(10),
-    PRIMARY KEY (professor_id)
+    user_id INT,
+    PRIMARY KEY (user_id)
 );
 
 -- Optional view for listing professor details
 CREATE VIEW professors_view AS
-SELECT 
-    professor_id, 
-    professor_first_name,
-    professor_last_name,
-    professor_email, 
-    professor_phone_number, 
-    professor_city, 
-    professor_state,
-    professor_zip_code
-FROM professors;
+SELECT  user_id             AS professor_id,
+        user_first_name     AS professor_first_name,
+        user_last_name      AS professor_last_name,
+        user_email          AS professor_email,
+        user_phone_number   AS professor_phone_number,
+        user_street         AS professor_street,
+        user_city           AS professor_city,
+        user_state          AS professor_state,
+        user_zip_code       AS professor_zip_code
+FROM    users;

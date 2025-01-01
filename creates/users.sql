@@ -1,28 +1,24 @@
-CREATE TABLE designations (
-    designation    VARCHAR(64),
-    PRIMARY KEY (designation)
-);
-
-INSERT INTO designations (designation)
-VALUES  ("student"),
-        ("admin");
-
 CREATE TABLE users (
-    user_id         INT AUTO_INCREMENT,
-    user_name       VARCHAR(128) NOT NULL,
-    user_password   VARCHAR(256) NOT NULL,
-    designation     VARCHAR(64),
-    designation_id  INT,
-    FOREIGN KEY (designation) REFERENCES roles (designation) ON DELETE RESTRICT,
+    user_id             INT AUTO_INCREMENT,
+    user_first_name     VARCHAR(128) NOT NULL,
+    user_last_name      VARCHAR(128) NOT NULL,
+    user_email          VARCHAR(256) NOT NULL,
+    user_phone_number   VARCHAR(16) NOT NULL,
+    user_street         VARCHAR(128) NOT NULL,
+    user_city           VARCHAR(64) NOT NULL,
+    user_state          VARCHAR(2) NOT NULL,
+    user_zip_code       VARCHAR(8) NOT NULL,
     PRIMARY KEY (user_id),
-    UNIQUE (user_name)
 );
 
 CREATE VIEW users_view AS
 SELECT  user_id,
-        user_name,
-        user_password,
-        designation,
-        designation_id
-FROM users;
-
+        user_first_name,
+        user_last_name,
+        user_email,
+        user_phone_number,
+        user_street,
+        user_city,
+        user_state,
+        user_zip_code
+FROM    users;

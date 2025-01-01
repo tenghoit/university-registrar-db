@@ -1,29 +1,29 @@
 -- Creating the students table
 CREATE TABLE students (
-    student_id INT AUTO_INCREMENT,
-    student_first_name VARCHAR(50) NOT NULL,
-    student_last_name VARCHAR(50) NOT NULL,
-    student_email VARCHAR(100) NOT NULL,
-    student_phone_number VARCHAR(15),
-    student_street VARCHAR(100),
-    student_city VARCHAR(50),
-    student_state VARCHAR(50),
-    student_zip_code VARCHAR(10),
-    professor_id INT,
-    FOREIGN KEY (professor_id) REFERENCES professors(professor_id) ON DELETE SET NULL,
-    PRIMARY KEY (student_id)
+    user_id                 INT,
+    student_enrollment_date DATE,
+    student_advisor_id      INT,
+    FOREIGN KEY (student_advisor_id) REFERENCES professors(user_id) ON DELETE SET NULL,
+    PRIMARY KEY (user_id)
 );
 
 -- Optional view for listing student details
 CREATE VIEW students_view AS
-SELECT 
-    student_id, 
-    student_first_name,
-    student_last_name,
-    student_email, 
-    student_phone_number, 
-    student_city, 
-    student_state,
-    student_zip_code,
-    professor_id
-FROM students;
+SELECT  user_id                     AS student_id,
+        user_first_name             AS student_first_name,
+        user_last_name              AS student_last_name,
+        user_email                  AS student_email,
+        user_phone_number           AS student_phone_number,
+        user_street                 AS student_street,
+        user_city                   AS student_city,
+        user_state                  AS student_state,
+        user_zip_code               AS student_zip_code
+        student_enrollment_date,
+        student_advisor_id,
+        professor.user_first_name   AS advisor_first_name,
+        professor.user_last_name    AS advisor_last_name
+FROM    students
+        JOIN users
+        USING user_id
+        JOIN users AS professor
+        ON student_advisor_id = professor.user_id;
