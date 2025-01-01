@@ -7,7 +7,9 @@ CREATE TABLE degree_requirements(
 );
 
 CREATE VIEW degree_requirements_view AS
-SELECT  degree_name,
+SELECT  degree_id,
+        degree_name,
+        degree_type,
         course_id,
         course_discipline,
         course_number,
@@ -18,5 +20,6 @@ FROM    degree_requirements
         JOIN courses
         USING (course_id)
 ORDER BY    degree_name ASC,
+            degree_type ASC,
             course_discipline ASC;
             course_number ASC;
