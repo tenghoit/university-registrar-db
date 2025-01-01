@@ -8,7 +8,7 @@ CREATE TABLE course_prerequisites(
 
 
 CREATE VIEW course_prerequisites_view AS
-    SELECT  primary_course.course_id,
+SELECT      primary_course.course_id,
             primary_course.course_discipline,
             primary_course.course_number,
             primary_course.course_name,
@@ -26,7 +26,7 @@ ORDER BY    primary_course.course_discipline ASC,
 
 
 CREATE VIEW course_prerequisites_single_view AS
-    SELECT  primary_course.course_id,
+SELECT      primary_course.course_id,
             primary_course.course_discipline,
             primary_course.course_number,
             primary_course.course_name,
