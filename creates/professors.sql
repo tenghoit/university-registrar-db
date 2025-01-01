@@ -16,4 +16,6 @@ SELECT  user_id             AS professor_id,
         user_city           AS professor_city,
         user_state          AS professor_state,
         user_zip_code       AS professor_zip_code
-FROM    users;
+FROM    professors
+        JOIN users
+        USING user_id;

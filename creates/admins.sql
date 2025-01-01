@@ -16,4 +16,6 @@ SELECT  user_id             AS admin_id,
         user_city           AS admin_city,
         user_state          AS admin_state,
         user_zip_code       AS admin_zip_code
-FROM    users;
+FROM    admins
+        JOIN users
+        USING user_id;
