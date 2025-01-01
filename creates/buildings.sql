@@ -4,5 +4,5 @@ CREATE TABLE buildings (
 );
 
 CREATE VIEW buildings_view AS
-SELECT building_name
-FROM buildings;
+SELECT  building_name
+FROM    buildings;

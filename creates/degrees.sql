@@ -1,13 +1,3 @@
-CREATE TABLE degree_types (
-    degree_type VARCHAR(64),
-    PRIMARY KEY (degree_type)
-);
-
-INSERT INTO degree_types (degree_type)
-VALUES  ('Major'),
-        ('Minor');
-
-
 CREATE TABLE degrees (
     degree_id   INT AUTO_INCREMENT,
     degree_name VARCHAR(128),

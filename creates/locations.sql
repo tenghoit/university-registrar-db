@@ -1,6 +1,6 @@
 CREATE TABLE locations (
     building_name  VARCHAR(64),
-    room_number    INT,
+    room_number    VARCHAR(64),
     room_capacity  INT,
     FOREIGN KEY (building_name) REFERENCES buildings (building_name) ON DELETE CASCADE,
     PRIMARY KEY (building_name, room_number)
