@@ -3,6 +3,7 @@ CREATE TABLE students (
     user_id                 INT,
     student_enrollment_date DATE,
     student_advisor_id      INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (student_advisor_id) REFERENCES professors(user_id) ON DELETE SET NULL,
     PRIMARY KEY (user_id)
 );

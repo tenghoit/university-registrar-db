@@ -1,6 +1,7 @@
 -- Creating the professors table
 CREATE TABLE professors (
     user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     PRIMARY KEY (user_id)
 );
 
