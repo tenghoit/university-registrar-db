@@ -8,6 +8,7 @@ USE ku_registrar;
 SOURCE creates/buildings.sql;
 SOURCE creates/locations.sql;
 SOURCE creates/terms.sql;
+SOURCE creates/days.sql;
 SOURCE creates/class_schedules.sql;
 SOURCE creates/time_blocks.sql;
 SOURCE creates/professors.sql;
