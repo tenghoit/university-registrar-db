@@ -1,13 +1,13 @@
 -- Creating the admins table
 CREATE TABLE admins (
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    PRIMARY KEY (user_id)
+    admin_id INT,
+    FOREIGN KEY (admin_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    PRIMARY KEY (admin_id)
 );
 
 -- Optional view for listing admin details
 CREATE VIEW admins_view AS
-SELECT  user_id             AS admin_id,
+SELECT  admin_id,
         user_first_name     AS admin_first_name,
         user_last_name      AS admin_last_name,
         user_email          AS admin_email,
@@ -18,4 +18,4 @@ SELECT  user_id             AS admin_id,
         user_zip_code       AS admin_zip_code
 FROM    admins
         JOIN users
-        USING user_id;
+        ON user_id = admin_id;

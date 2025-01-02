@@ -1,13 +1,13 @@
 -- Creating the professors table
 CREATE TABLE professors (
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    PRIMARY KEY (user_id)
+    professor_id INT,
+    FOREIGN KEY (professor_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    PRIMARY KEY (professor_id)
 );
 
 -- Optional view for listing professor details
 CREATE VIEW professors_view AS
-SELECT  user_id             AS professor_id,
+SELECT  professor_id,
         user_first_name     AS professor_first_name,
         user_last_name      AS professor_last_name,
         user_email          AS professor_email,
@@ -18,4 +18,4 @@ SELECT  user_id             AS professor_id,
         user_zip_code       AS professor_zip_code
 FROM    professors
         JOIN users
-        USING user_id;
+        ON user_id = professor_id;
