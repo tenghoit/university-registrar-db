@@ -60,7 +60,7 @@ RETURN (
             AND room_number = room_number_input
             AND term_id = term_id_input
             AND day_letter = day_letter_input
-            AND find_time_conflict(start_time, end_time, start_time_input, end_time_input,) <> 0          
+            AND find_time_conflict(start_time, end_time, start_time_input, end_time_input) <> 0          
 );
 
 
@@ -78,7 +78,7 @@ RETURN (
     WHERE   professor_id = professor_id_input
             AND term_id = term_id_input
             AND day_letter = day_letter_input
-            AND find_time_conflict(start_time, end_time, start_time_input, end_time_input,) <> 0          
+            AND find_time_conflict(start_time, end_time, start_time_input, end_time_input) <> 0          
 );
 
 

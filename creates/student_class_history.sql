@@ -8,35 +8,22 @@ CREATE TABLE student_class_history(
 );
 
 CREATE VIEW student_class_history_view AS
-SELECT  
-        -- sch.student_id as student_id,
-        -- -- CONCAT(student_first_name, ' ', student_last_name) AS student_name,
-        -- student_first_name,
-        -- student_last_name,
-        -- class_id,
-        -- course_discipline, 
-        -- course_number,
-        -- section,
-        -- course_name,
-        -- term_start_date,
-        -- term_end_date
-        -- grade
-        *
-FROM    student_class_history as sch
-        JOIN students as s
-        ON sch.student_id = s.student_id
-        JOIN classes_view
-        USING (class_id)
-ORDER BY    term_start_date DESC,
-            course_discipline ASC,
-            course_number ASC,
-            section ASC;
-
-
-CREATE VIEW student_class_history_view_min AS
-SELECT  *
+SELECT  student_id,
+        student_first_name,
+        student_last_name,
+        class_id,
+        course_id
+        course_discipline, 
+        course_number,
+        section,
+        course_name,
+        term_id,
+        term_name,
+        grade
 FROM    student_class_history
-        JOIN classes
+        JOIN students
+        USING(student_id)
+        JOIN classes_view
         USING (class_id);
 
 

@@ -18,31 +18,49 @@ CREATE TABLE classes (
 
 CREATE VIEW classes_view AS
 SELECT      class_id, 
-            course_id
+            course_id,
             course_discipline,
             course_number,
             section,
             course_name,
-            term_name
+            term_id,
+            term_name,
+            professor_id,
             professor_first_name,
             professor_last_name,
             building_name,
             room_number,
-            class_max_capacity,
-            prerequisites
+            class_max_capacity
 FROM        classes
             JOIN courses_view
                 USING (course_id)
             JOIN terms_view
                 USING (term_id)
             JOIN professors_view
-                USING (professor_id)
-            LEFT OUTER JOIN course_prerequisites_single_view AS cpsv
-                ON course_id = cpsv.primary_course.course_id
-ORDER BY    term_start_date DESC,
-            course_discipline ASC,
-            course_number ASC,
-            section ASC;
+                USING (professor_id);
+
+CREATE VIEW classes_full_view AS 
+SELECT      class_id, 
+            course_id,
+            course_discipline,
+            course_number,
+            section,
+            course_name,
+            term_id,
+            term_name,
+            professor_id,
+            professor_first_name,
+            professor_last_name,
+            building_name,
+            room_number,            
+            class_max_capacity,
+            schedule,
+            prerequisites
+FROM        classes_view
+            JOIN class_schedules_view
+            USING(class_id)
+            LEFT OUTER JOIN course_prerequisites_single_view
+            ON course_id = primary_course.course_id;
 
 
 DROP FUNCTION IF EXISTS get_building_name_by_class;
