@@ -7,6 +7,7 @@ CREATE TABLE student_class_history(
     FOREIGN KEY (class_id) REFERENCES classes (class_id) ON DELETE RESTRICT
 );
 
+
 CREATE VIEW student_class_history_view AS
 SELECT  student_id,
         student_first_name,
@@ -25,6 +26,27 @@ FROM    student_class_history
         USING(student_id)
         JOIN classes_view
         USING (class_id);
+
+
+CREATE VIEW student_class_history_with_schedule_view AS
+SELECT  student_id,
+        student_first_name,
+        student_last_name,
+        class_id,
+        course_id
+        course_discipline, 
+        course_number,
+        section,
+        course_name,
+        term_id,
+        term_name,
+        grade,
+        day_letter,
+        start_time,
+        end_time
+FROM    student_class_history_view
+        JOIN class_schedules
+        USING(class_id);
 
 
 DROP FUNCTION IF EXISTS get_class_current_size;
@@ -57,6 +79,13 @@ RETURN (
                 )             
 );
 
+DROP FUNCTION IF EXISTS find_time_conflicts;
+CREATE FUNCTION find_time_conflicts(student_id_input INT, class_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT
+);
+
 DELIMITER $$
 CREATE TRIGGER student_class_history_insert
 BEFORE INSERT ON student_class_history FOR EACH ROW
@@ -74,11 +103,11 @@ BEGIN
     -- SET @current_term_id = get_term_id_by_class(NEW.class_id);
     -- SET @current_time_start = get_time_start_by_class(NEW.class_id);
     -- SET @current_time_end = get_time_end_by_class(NEW.class_id);
-    -- SET @num_classes_at_current_time = get_num_student_class_by_term_time(@current_term_id, @current_time_start, @current_time_end, NEW.student_id);
+    SET @time_conflicts = find_time_conflicts(NEW.student_id, NEW.class_id);
 
-    -- IF (@num_classes_at_current_time <> 0) THEN
-    --     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
-    -- END IF;
+    IF (@num_classes_at_current_time <> 0) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
+    END IF;
 
 END; $$
 DELIMITER ;        
