@@ -4,9 +4,9 @@ CREATE TABLE class_schedules(
     start_time TIME,
     end_time   TIME,
     PRIMARY KEY (class_id, day_letter, start_time, end_time),
-    FOREIGN KEY (day_letter) REFERENCES days (day_letter) ON DELETE RESTRICT,
-    FOREIGN KEY (start_time) REFERENCES time_blocks (start_time) ON DELETE RESTRICT,
-    FOREIGN KEY (end_time) REFERENCES time_blocks (end_time) ON DELETE RESTRICT
+    FOREIGN KEY (class_id) REFERENCES classes (class_id) ON DELETE RESTRICT,
+    FOREIGN KEY (day_letter) REFERENCES days_of_the_week (day_letter) ON DELETE RESTRICT,
+    FOREIGN KEY (start_time, end_time) REFERENCES time_blocks (start_time, end_time) ON DELETE RESTRICT
 );
 
 CREATE VIEW class_schedules_view AS
@@ -30,13 +30,13 @@ CREATE VIEW class_schedules_single_view AS
 SELECT  class_id,
         GROUP_CONCAT(
             DISTINCT CONCAT(
-                GROUP_CONCAT(DISTINCT day_letter ORDER BY FIELD(day_letter, 'M', 'T', 'W', 'R', 'F', 'S', 'U') SEPARATOR ''),
+                day_letter,
                 ' ',
                 DATE_FORMAT(start_time, '%l:%i%p'),  -- Format the start time (e.g., 1:00pm)
                 '-',
-                DATE_FORMAT(end_time, '%l:%i%p')  -- Format the end time (e.g., 2:00pm)
+                DATE_FORMAT(end_time, '%l:%i%p')   -- Format the end time (e.g., 2:00pm)
             )
-            ORDER BY start_time
+            ORDER BY FIELD(day_letter, 'M', 'T', 'W', 'R', 'F', 'S', 'U'), start_time
             SEPARATOR ', '
         ) AS schedule
 FROM    class_schedules_view

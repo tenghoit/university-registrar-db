@@ -28,7 +28,7 @@ RETURN (
                 AND c.day_letter = s.day_letter
     WHERE   c.class_id = class_id_input
             AND s.student_id = student_id_input
-            AND find_time_conflict(s.start_time, s.end_time, c.start_time, c.end_time) <> 0;     
+            AND find_time_conflict(s.start_time, s.end_time, c.start_time, c.end_time) <> 0
 
 );
 

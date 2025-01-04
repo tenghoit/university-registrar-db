@@ -5,31 +5,55 @@ USE university_registrar;
 
 
 -- creates statements
+SELECT 'Building buildings table';
 SOURCE creates/buildings.sql;
+SELECT 'Building locations table';
 SOURCE creates/locations.sql;
+SELECT 'Building terms table';
 SOURCE creates/terms.sql;
-SOURCE creates/days.sql;
+SELECT 'Building days_of_the_week table';
+SOURCE creates/days_of_the_week.sql;
+SELECT 'Building time_blocks table';
 SOURCE creates/time_blocks.sql;
+SELECT 'Building users table';
 SOURCE creates/users.sql;
+SELECT 'Building professors table';
 SOURCE creates/professors.sql;
+SELECT 'Building students table';
 SOURCE creates/students.sql;
+SELECT 'Building admins table';
 SOURCE creates/admins.sql;
-SOURCE creates/user_logins.sql;
 
+SELECT 'Building user_logins table';
+SOURCE creates/user_logins.sql;
+SELECT 'Building courses table';
 SOURCE creates/courses.sql;
+SELECT 'Building labs table';
 SOURCE creates/labs.sql;
+SELECT 'Building course_prerequisites table';
 SOURCE creates/course_prerequisites.sql;
+SELECT 'Building degree_types table';
 SOURCE creates/degree_types.sql;
+SELECT 'Building degrees table';
 SOURCE creates/degrees.sql;
+SELECT 'Building degree_requirements table';
 SOURCE creates/degree_requirements.sql;
+SELECT 'Building student_degrees table';
 SOURCE creates/student_degrees.sql;
 
+SELECT 'Building classes table';
 SOURCE creates/classes.sql;
+SELECT 'Building class_schedules table';
 SOURCE creates/class_schedules.sql;
+SELECT 'Building class_schedules_triggers table';
 SOURCE creates/class_schedules_triggers.sql;
+SELECT 'Building student_class_history table';
 SOURCE creates/student_class_history.sql;
+SELECT 'Building student_class_history_triggers table';
 SOURCE creates/student_class_history_triggers.sql;
+SELECT 'Building classes_waitlist table';
 SOURCE creates/classes_waitlist.sql;
+
 
 -- -- test data, order matters here
 -- SOURCE data/buildings_data.sql;

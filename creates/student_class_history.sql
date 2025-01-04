@@ -13,7 +13,7 @@ SELECT  student_id,
         student_first_name,
         student_last_name,
         class_id,
-        course_id
+        course_id,
         course_discipline, 
         course_number,
         section,
@@ -22,7 +22,7 @@ SELECT  student_id,
         term_name,
         grade
 FROM    student_class_history
-        JOIN students
+        JOIN students_view
         USING(student_id)
         JOIN classes_view
         USING (class_id);
@@ -33,7 +33,7 @@ SELECT  student_id,
         student_first_name,
         student_last_name,
         class_id,
-        course_id
+        course_id,
         course_discipline, 
         course_number,
         section,
@@ -50,28 +50,28 @@ FROM    student_class_history_view
 
 
 CREATE VIEW classes_full_view AS 
-SELECT      class_id, 
-            course_id,
-            course_discipline,
-            course_number,
-            section,
-            course_name,
-            term_id,
-            term_name,
-            professor_id,
-            professor_first_name,
-            professor_last_name,
-            building_name,
-            room_number,      
+SELECT      c.class_id, 
+            c.course_id AS course_id,
+            c.course_discipline AS course_discipline,
+            c.course_number AS course_number,
+            c.section,
+            c.course_name,
+            c.term_id,
+            c.term_name,
+            c.professor_id,
+            c.professor_first_name,
+            c.professor_last_name,
+            c.building_name,
+            c.room_number,      
             COUNT(student_id) AS class_current_capacity,      
-            class_max_capacity,
+            c.class_max_capacity,
             schedule,
             prerequisites
-FROM        classes_view
+FROM        classes_view AS c
             JOIN class_schedules_single_view
-            USING(class_id)
+            ON class_schedules_single_view.class_id = c.class_id
             LEFT OUTER JOIN course_prerequisites_single_view
-            ON course_id = primary_course.course_id
+            ON c.course_id = primary_course_id
             JOIN student_class_history_view
-            USING(class_id)
+            ON c.class_id = student_class_history_view.class_id
 GROUP BY    class_id;

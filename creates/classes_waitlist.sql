@@ -9,21 +9,22 @@ CREATE TABLE classes_waitlist(
 
 CREATE VIEW classes_waitlist_view AS
 SELECT      student_id,
-            -- CONCAT(student_first_name, ' ', student_last_name) AS student_name,
             student_first_name,
             student_last_name,
             class_id,
+            course_id,
             course_discipline, 
             course_number,
             section,
             course_name,
-            term
+            term_id,
+            term_name
 FROM        classes_waitlist
-            JOIN students
+            JOIN students_view
             USING (student_id)
             JOIN classes_view
             USING (class_id)
-ORDER BY    term DESC,
+ORDER BY    term_id DESC,
             course_discipline ASC,
             course_number ASC,
             section ASC;

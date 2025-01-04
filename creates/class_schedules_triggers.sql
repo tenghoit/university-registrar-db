@@ -8,7 +8,7 @@ CREATE FUNCTION find_location_conflicts(
     end_time_input TIME)
 RETURNS INT
 RETURN (
-    SELECT  COUNT(class_id)
+    SELECT  COUNT(*)
     FROM    class_schedules_view
     WHERE   building_name = building_name_input
             AND room_number = room_number_input
@@ -27,14 +27,13 @@ CREATE FUNCTION find_professor_conflicts(
     end_time_input TIME)
 RETURNS INT
 RETURN (
-    SELECT  COUNT(class_id)
+    SELECT  COUNT(*)
     FROM    class_schedules_view
     WHERE   professor_id = professor_id_input
             AND term_id = term_id_input
             AND day_letter = day_letter_input
             AND find_time_conflict(start_time, end_time, start_time_input, end_time_input) <> 0          
 );
-
 
 
 DELIMITER $$

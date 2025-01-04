@@ -7,7 +7,7 @@ CREATE TABLE time_blocks(
 CREATE VIEW time_blocks_view AS
 SELECT  start_time,
         end_time
-FROM time_blocks;
+FROM    time_blocks;
 
 
 DELIMITER $$
@@ -22,9 +22,9 @@ RETURNS INT
 DETERMINISTIC
 BEGIN
     RETURN (
-        ((start_time_1 >= start_time_2) AND (start_time_1 <= end_time_2)) -- starts during
+        ((start_time_1 >= start_time_2) AND (start_time_1 < end_time_2)) -- starts during
         OR
-        ((end_time_1 >= start_time_2) AND (end_time_1 <= end_time_2)) -- ends during
+        ((end_time_1 > start_time_2) AND (end_time_1 <= end_time_2)) -- ends during
         OR
         ((start_time_1 <= start_time_2) AND (end_time_1 >= end_time_2)) -- complete overlap
     );
