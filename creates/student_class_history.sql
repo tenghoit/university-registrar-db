@@ -59,8 +59,8 @@ RETURN (
     GROUP BY class_id
 );
 
-DROP FUNCTION IF EXISTS find_time_conflicts;
-CREATE FUNCTION find_time_conflicts(student_id_input INT, class_id_input INT)
+DROP FUNCTION IF EXISTS find_student_classes_time_conflicts;
+CREATE FUNCTION find_student_classes_time_conflicts(student_id_input INT, class_id_input INT)
 RETURNS INT
 RETURN (
     SELECT  COUNT(*)
@@ -69,31 +69,31 @@ RETURN (
                 ON  c.term_id = s.term_id
                 AND c.day_letter = s.day_letter
     WHERE   c.class_id = class_id_input
-            AND s.student_id
+            AND s.student_id = student_id_input
             AND find_time_conflict(s.start_time, s.end_time, c.start_time, c.end_time) <> 0;     
 
 );
+
+DROP FUNCTION IF EXISTS find_course_prerequisites_conflicts;
+CREATE FUNCTION find_course_prerequisites_conflicts(student_id_input INT, class_id_input INT)
+
+
 
 DELIMITER $$
 CREATE TRIGGER student_class_history_insert
 BEFORE INSERT ON student_class_history FOR EACH ROW
 BEGIN
 
+    -- class size constraint
     SET @current_class_size = get_class_current_size(NEW.class_id);
     SET @max_capacity = get_class_max_capacity(NEW.class_id);
-
-    -- class size constraint
     IF (@current_class_size >= @max_capacity) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class is currently full';
     END IF;
 
     -- time constraint
-    -- SET @current_term_id = get_term_id_by_class(NEW.class_id);
-    -- SET @current_time_start = get_time_start_by_class(NEW.class_id);
-    -- SET @current_time_end = get_time_end_by_class(NEW.class_id);
-    SET @time_conflicts = find_time_conflicts(NEW.student_id, NEW.class_id);
-
-    IF (@num_classes_at_current_time <> 0) THEN
+    SET @time_conflicts = find_student_classes_time_conflicts(NEW.student_id, NEW.class_id);
+    IF (@time_conflicts <> 0) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
     END IF;
 
@@ -106,30 +106,23 @@ CREATE TRIGGER student_class_history_update
 BEFORE UPDATE ON student_class_history FOR EACH ROW
 BEGIN
 
-    SET @current_class_size = get_class_current_size(NEW.class_id);
-    SET @max_capacity = get_class_max_capacity(NEW.class_id);
+    IF (NEW.class_id <> OLD.class_id) THEN -- only if class is changed
 
-    -- class size constraint
-    IF (NEW.class_id <> OLD.class_id) THEN
+        -- class size constraint
+        SET @current_class_size = get_class_current_size(NEW.class_id);
+        SET @max_capacity = get_class_max_capacity(NEW.class_id);
         IF (@current_class_size >= @max_capacity) THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class is currently full';
         END IF;
+
+
+        -- time constraint
+        SET @time_conflicts = find_student_classes_time_conflicts(NEW.student_id, NEW.class_id);
+        IF (@time_conflicts <> 0) THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
+        END IF;
+
     END IF;     
-
-    -- time constraint
-    -- SET @current_term = get_term_id_by_class(NEW.class_id);
-    -- SET @new_time_start = get_time_start_by_class(NEW.class_id);
-    -- SET @new_time_end = get_time_end_by_class(NEW.class_id);
-    -- SET @num_classes_at_current_time = get_num_student_class_by_term_time(@current_term, @new_time_start, @new_time_end, NEW.student_id);
-
-    -- SET @old_time_start = get_time_start_by_class(OLD.class_id);
-    -- SET @old_time_end = get_time_end_by_class(OLD.class_id);
-
-    -- IF (@new_time_start <> @old_time_start) OR (@new_time_end <> @old_time_end) THEN
-    --     IF (@num_classes_at_current_time <> 0) THEN
-    --         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
-    --     END IF; 
-    -- END IF; 
 
 END; $$
 DELIMITER ;        
