@@ -21,5 +21,5 @@ FROM    degree_requirements
         USING (course_id)
 ORDER BY    degree_name ASC,
             degree_type ASC,
-            course_discipline ASC;
+            course_discipline ASC,
             course_number ASC;

@@ -3,7 +3,7 @@ CREATE TABLE student_degrees (
     degree_id   INT,
     PRIMARY KEY (student_id, degree_id),
     FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
-    FOREIGN KEY (degree_id) REFERENCES degrees(degree_id) ON DELETE RESTRICT,
+    FOREIGN KEY (degree_id) REFERENCES degrees(degree_id) ON DELETE RESTRICT
 );
 
 CREATE VIEW student_degrees_view AS

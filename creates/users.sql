@@ -8,7 +8,7 @@ CREATE TABLE users (
     user_city           VARCHAR(64) NOT NULL,
     user_state          VARCHAR(2) NOT NULL,
     user_zip_code       VARCHAR(8) NOT NULL,
-    PRIMARY KEY (user_id),
+    PRIMARY KEY (user_id)
 );
 
 CREATE VIEW users_view AS
