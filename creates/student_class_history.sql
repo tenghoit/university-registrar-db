@@ -59,31 +59,19 @@ RETURN (
     GROUP BY class_id
 );
 
-
-DROP FUNCTION IF EXISTS get_num_student_class_by_term_time;
-CREATE FUNCTION get_num_student_class_by_term_time(
-    term_id_input INT,
-    time_start_input TIME, 
-    time_end_input TIME,
-    student_id_input INT)
-RETURNS INT
-RETURN (
-    SELECT COUNT(class_id)
-        FROM    student_class_history_view_min
-        WHERE   student_id = student_id_input
-                AND term_id = term_id_input
-                AND (
-                    ((time_start >= time_start_input) AND (time_start <= time_end_input))
-                    OR
-                    ((time_end >= time_start_input) AND (time_end <= time_end_input))
-                )             
-);
-
 DROP FUNCTION IF EXISTS find_time_conflicts;
 CREATE FUNCTION find_time_conflicts(student_id_input INT, class_id_input INT)
 RETURNS INT
 RETURN (
-    SELECT
+    SELECT  COUNT(*)
+    FROM    classes_with_schedule_view AS c
+            JOIN student_class_history_with_schedule_view AS s
+                ON  c.term_id = s.term_id
+                AND c.day_letter = s.day_letter
+    WHERE   c.class_id = class_id_input
+            AND s.student_id
+            AND find_time_conflict(s.start_time, s.end_time, c.start_time, c.end_time) <> 0;     
+
 );
 
 DELIMITER $$
