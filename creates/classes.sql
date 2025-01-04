@@ -52,7 +52,8 @@ SELECT      class_id,
             professor_first_name,
             professor_last_name,
             building_name,
-            room_number,            
+            room_number,      
+            COUNT(student_id) AS class_current_capacity,      
             class_max_capacity,
             schedule,
             prerequisites
@@ -60,7 +61,10 @@ FROM        classes_view
             JOIN class_schedules_view
             USING(class_id)
             LEFT OUTER JOIN course_prerequisites_single_view
-            ON course_id = primary_course.course_id;
+            ON course_id = primary_course.course_id
+            JOIN student_class_history_view
+            USING(class_id)
+GROUP BY    class_id;
 
 
 DROP FUNCTION IF EXISTS get_building_name_by_class;
@@ -77,6 +81,15 @@ CREATE FUNCTION get_room_number_by_class(class_id_input INT)
 RETURNS VARCHAR(64)
 RETURN (
     SELECT  room_number
+    FROM    classes
+    WHERE   class_id = class_id_input
+);
+
+DROP FUNCTION IF EXISTS get_course_id_by_class;
+CREATE FUNCTION get_course_id_by_class(class_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  course_id
     FROM    classes
     WHERE   class_id = class_id_input
 );

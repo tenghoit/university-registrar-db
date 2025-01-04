@@ -49,14 +49,23 @@ FROM    student_class_history_view
         USING(class_id);
 
 
-DROP FUNCTION IF EXISTS get_class_current_size;
-CREATE FUNCTION get_class_current_size(class_id_input INT)
+DROP FUNCTION IF EXISTS find_available_class_capacity;
+CREATE FUNCTION find_available_class_capacity(class_id_input INT)
 RETURNS INT
 RETURN (
-    SELECT COUNT(student_id)
-    FROM    student_class_history
+    SELECT  (class_max_capacity - class_current_capacity)
+    FROM    classes_full_view
     WHERE   class_id = class_id_input
-    GROUP BY class_id
+);
+
+DROP FUNCTION IF EXISTS student_course_exists;
+CREATE FUNCTION student_course_exists(student_id_input INT, course_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  COUNT(*)
+    FROM    student_class_history_view
+    WHERE   student_id = student_id_input
+            AND course_id = course_id_input
 );
 
 DROP FUNCTION IF EXISTS find_student_classes_time_conflicts;
@@ -75,9 +84,14 @@ RETURN (
 );
 
 DROP FUNCTION IF EXISTS find_course_prerequisites_conflicts;
-CREATE FUNCTION find_course_prerequisites_conflicts(student_id_input INT, class_id_input INT)
-
-
+CREATE FUNCTION find_course_prerequisites_conflicts(student_id_input INT, course_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  COUNT(*)
+    FROM    course_prerequisites
+    WHERE   course_id = course_id_input
+            AND student_course_exists(student_id_input, prerequisite_id) = 0 
+);       
 
 DELIMITER $$
 CREATE TRIGGER student_class_history_insert
@@ -85,9 +99,8 @@ BEFORE INSERT ON student_class_history FOR EACH ROW
 BEGIN
 
     -- class size constraint
-    SET @current_class_size = get_class_current_size(NEW.class_id);
-    SET @max_capacity = get_class_max_capacity(NEW.class_id);
-    IF (@current_class_size >= @max_capacity) THEN
+    SET @available_capacity = find_available_class_capacity(NEW.class_id);
+    IF (@available_capacity <= 0) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class is currently full';
     END IF;
 
@@ -97,32 +110,12 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
     END IF;
 
-END; $$
-DELIMITER ;        
+    -- prereq conflict
+    SET @prerequisites_conflicts = find_course_prerequisites_conflicts(NEW.student_id, get_course_id_by_class(NEW.class_id));
+    IF (@prerequisites_conflicts <> 0) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Has not met all course prerequisites';
+    END IF;
 
-
-DELIMITER $$
-CREATE TRIGGER student_class_history_update
-BEFORE UPDATE ON student_class_history FOR EACH ROW
-BEGIN
-
-    IF (NEW.class_id <> OLD.class_id) THEN -- only if class is changed
-
-        -- class size constraint
-        SET @current_class_size = get_class_current_size(NEW.class_id);
-        SET @max_capacity = get_class_max_capacity(NEW.class_id);
-        IF (@current_class_size >= @max_capacity) THEN
-            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Class is currently full';
-        END IF;
-
-
-        -- time constraint
-        SET @time_conflicts = find_student_classes_time_conflicts(NEW.student_id, NEW.class_id);
-        IF (@time_conflicts <> 0) THEN
-            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Already enrolled in another class at that time';
-        END IF;
-
-    END IF;     
 
 END; $$
-DELIMITER ;        
+DELIMITER ;       
