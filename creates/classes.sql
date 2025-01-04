@@ -39,33 +39,6 @@ FROM        classes
             JOIN professors_view
                 USING (professor_id);
 
-CREATE VIEW classes_full_view AS 
-SELECT      class_id, 
-            course_id,
-            course_discipline,
-            course_number,
-            section,
-            course_name,
-            term_id,
-            term_name,
-            professor_id,
-            professor_first_name,
-            professor_last_name,
-            building_name,
-            room_number,      
-            COUNT(student_id) AS class_current_capacity,      
-            class_max_capacity,
-            schedule,
-            prerequisites
-FROM        classes_view
-            JOIN class_schedules_view
-            USING(class_id)
-            LEFT OUTER JOIN course_prerequisites_single_view
-            ON course_id = primary_course.course_id
-            JOIN student_class_history_view
-            USING(class_id)
-GROUP BY    class_id;
-
 
 DROP FUNCTION IF EXISTS get_building_name_by_class;
 CREATE FUNCTION get_building_name_by_class(class_id_input INT)

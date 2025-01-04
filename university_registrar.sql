@@ -26,7 +26,9 @@ SOURCE creates/student_degrees.sql;
 
 SOURCE creates/classes.sql;
 SOURCE creates/class_schedules.sql;
+SOURCE creates/class_schedules_triggers.sql;
 SOURCE creates/student_class_history.sql;
+SOURCE creates/student_class_history_triggers.sql;
 SOURCE creates/classes_waitlist.sql;
 
 -- -- test data, order matters here
