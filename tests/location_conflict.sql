@@ -21,5 +21,7 @@ INSERT INTO class_schedules(
 )
 VALUES
     (1, 'M', '08:00:00', '09:00:00'),
-    (2, 'M', '08:00:00', '09:00:00');
+    (1, 'W', '08:00:00', '09:00:00'),
+    (2, 'W', '08:00:00', '09:00:00');
 
+SELECT * FROM class_schedules_view;
