@@ -23,9 +23,9 @@ SELECT 'Building students table';
 SOURCE creates/students.sql;
 SELECT 'Building admins table';
 SOURCE creates/admins.sql;
-
 SELECT 'Building user_logins table';
 SOURCE creates/user_logins.sql;
+
 SELECT 'Building courses table';
 SOURCE creates/courses.sql;
 SELECT 'Building labs table';
@@ -55,27 +55,30 @@ SELECT 'Building classes_waitlist table';
 SOURCE creates/classes_waitlist.sql;
 
 
--- -- test data, order matters here
--- SOURCE data/buildings_data.sql;
--- SOURCE data/locations_data.sql;
--- SOURCE data/terms_data.sql;
--- SOURCE data/class_schedules_data.sql;
--- SOURCE data/time_blocks_data.sql;
--- SOURCE data/professors_data.sql;
--- SOURCE data/students_data.sql;
+-- test data, order matters here
+SOURCE data/buildings_data.sql;
+SOURCE data/locations_data.sql;
+SOURCE data/terms_data.sql;
+SOURCE data/time_blocks_data.sql;
+SOURCE data/users_data.sql;
+SOURCE data/professors_data.sql;
+SOURCE data/students_data.sql;
+SOURCE data/admins_data.sql;
+SOURCE data/user_logins_data.sql;
 
--- SOURCE data/courses_data.sql;
--- SOURCE data/degrees_data.sql;
--- SOURCE data/degree_requirements_data.sql;
--- SOURCE data/course_prerequisites_data.sql;
+SOURCE data/courses_data.sql;
+SOURCE data/labs_data.sql;
+SOURCE data/course_prerequisites_data.sql;
+SOURCE data/degrees_data.sql;
+SOURCE data/degree_requirements_data.sql;
 
 -- SOURCE data/classes_data.sql;
+-- SOURCE data/class_schedules_data.sql;
 -- SOURCE data/student_class_history_data.sql;
 -- SOURCE data/classes_waitlist_data.sql;
--- SOURCE data/users_data.sql;
 
 
--- -- checking if everythings good
+-- checking if everythings good
 -- SELECT * FROM buildings_view;
 -- SELECT * FROM locations_view;
 -- SELECT * FROM terms_view;
