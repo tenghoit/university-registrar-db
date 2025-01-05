@@ -87,29 +87,13 @@ SOURCE data/degree_requirements_data.sql;
 SELECT * FROM degree_requirements_view;
 
 -- SOURCE data/classes_data.sql;
--- SOURCE data/class_schedules_data.sql;
--- SOURCE data/student_class_history_data.sql;
--- SOURCE data/classes_waitlist_data.sql;
-
-
--- checking if everythings good
--- SELECT * FROM buildings_view;
--- SELECT * FROM locations_view;
--- SELECT * FROM terms_view;
--- SELECT * FROM class_schedules_view;
--- SELECT * FROM time_blocks_view;
--- SELECT * FROM professors_view;
--- SELECT * FROM students_view;
-
--- SELECT * FROM courses_view;
--- SELECT * FROM degrees_view;
--- SELECT * FROM degree_requirements_view;
--- SELECT * FROM course_prerequisites_view;
-
 -- SELECT * FROM classes_view;
+-- SOURCE data/class_schedules_data.sql;
+-- SELECT * FROM class_schedules_view;
+-- SOURCE data/student_class_history_data.sql;
 -- SELECT * FROM student_class_history_view;
+-- SOURCE data/classes_waitlist_data.sql;
 -- SELECT * FROM classes_waitlist_view;
--- SELECT * FROM users_view;
 
 -- tests
 -- SOURCE tests/location_conflict.sql;
