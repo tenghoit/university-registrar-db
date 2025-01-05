@@ -112,4 +112,5 @@ SELECT * FROM degree_requirements_view;
 -- SELECT * FROM users_view;
 
 -- tests
-SOURCE tests/location_conflict.sql;
+-- SOURCE tests/location_conflict.sql;
+SOURCE tests/professor_conflict.sql;
