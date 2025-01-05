@@ -50,28 +50,28 @@ FROM    student_class_history_view
 
 
 CREATE VIEW classes_full_view AS 
-SELECT      c.class_id, 
-            c.course_id AS course_id,
-            c.course_discipline AS course_discipline,
-            c.course_number AS course_number,
-            c.section,
-            c.course_name,
-            c.term_id,
-            c.term_name,
-            c.professor_id,
-            c.professor_first_name,
-            c.professor_last_name,
-            c.building_name,
-            c.room_number,      
-            COUNT(student_id) AS class_current_capacity,      
-            c.class_max_capacity,
+SELECT      c.class_id                  AS class_id, 
+            c.course_id                 AS course_id,
+            c.course_discipline         AS course_discipline,
+            c.course_number             AS course_number,
+            c.section                   AS section,
+            c.course_name               AS course_name,
+            c.term_id                   AS term_id,
+            c.term_name                 AS term_name,
+            c.professor_id              AS professor_id,
+            c.professor_first_name      AS professor_first_name,
+            c.professor_last_name       AS professor_last_name,
+            c.building_name             AS building_name,
+            c.room_number               AS room_number,      
+            COUNT(student_id)           AS class_current_capacity,      
+            c.class_max_capacity        AS class_max_capacity,
             schedule,
             prerequisites
 FROM        classes_view AS c
-            JOIN class_schedules_single_view
+            LEFT OUTER JOIN class_schedules_single_view
             ON class_schedules_single_view.class_id = c.class_id
             LEFT OUTER JOIN course_prerequisites_single_view
             ON c.course_id = primary_course_id
-            JOIN student_class_history_view
+            LEFT OUTER JOIN student_class_history_view
             ON c.class_id = student_class_history_view.class_id
 GROUP BY    class_id;

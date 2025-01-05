@@ -113,4 +113,5 @@ SELECT * FROM degree_requirements_view;
 
 -- tests
 -- SOURCE tests/location_conflict.sql;
-SOURCE tests/professor_conflict.sql;
+-- SOURCE tests/professor_conflict.sql;
+SOURCE tests/class_size_conflict.sql;
