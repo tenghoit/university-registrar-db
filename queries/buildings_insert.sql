@@ -1,2 +1,2 @@
-INSERT INTO buildings (building_names);
+INSERT INTO buildings (building_name)
 VALUES (?);

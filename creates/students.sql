@@ -1,7 +1,7 @@
 -- Creating the students table
 CREATE TABLE students (
     student_id              INT,
-    student_enrollment_date DATE,
+    student_enrollment_date DATE DEFAULT CURRENT_DATE,
     student_advisor_id      INT,
     FOREIGN KEY (student_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (student_advisor_id) REFERENCES professors(professor_id) ON DELETE SET NULL,

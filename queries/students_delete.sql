@@ -1,2 +1,2 @@
 DELETE FROM students
-WHERE student_id = ?;
+WHERE   student_id = ?;

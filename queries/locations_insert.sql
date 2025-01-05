@@ -1,5 +1,6 @@
-INSERT INTO locations(building_name,
-                      room_number,
-                      room_capacity
-                     );
-VALUES  (?,?,?);
+INSERT INTO locations(
+    building_name,
+    room_number,
+    room_capacity
+)
+VALUES (?, ?, ?);

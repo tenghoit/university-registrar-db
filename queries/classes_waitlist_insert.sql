@@ -1,2 +1,5 @@
-INSERT INTO classes_waitlist (student_id, class_id)
+INSERT INTO classes_waitlist (
+    student_id, 
+    class_id
+)
 VALUES (?, ?);

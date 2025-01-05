@@ -1,6 +1,4 @@
-UPDATE courses
-SET     course_discipline = ?,
-        course_number = ?,
-        course_credits = ?,
-        course_description = ?
-WHERE course_id = ?;
+UPDATE  degrees
+SET     degree_name = ?,
+        degree_type = ?
+WHERE   degree_id = ?;

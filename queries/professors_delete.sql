@@ -1,2 +1,2 @@
 DELETE FROM professors
-WHERE professor_id = ?;
+WHERE   professor_id = ?;
