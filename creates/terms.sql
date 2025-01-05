@@ -11,10 +11,10 @@ SELECT  term_id,
         term_end_date,
         CONCAT(
             CASE
-                WHEN MONTH(term_start_date) IN (12, 1, 2) THEN 'Winter'
-                WHEN MONTH(term_start_date) IN (3, 4, 5) THEN 'Spring'
-                WHEN MONTH(term_start_date) IN (6, 7, 8) THEN 'Summer'
-                WHEN MONTH(term_start_date) IN (9, 10, 11) THEN 'Fall'
+                WHEN MONTH(term_start_date) IN (1) THEN 'Winter'
+                WHEN MONTH(term_start_date) IN (2, 3, 4, 5, 6) THEN 'Spring'
+                WHEN MONTH(term_start_date) IN (7) THEN 'Summer'
+                WHEN MONTH(term_start_date) IN (8, 9, 10, 11, 12) THEN 'Fall'
             END,
             ' ',
             YEAR(term_start_date)
