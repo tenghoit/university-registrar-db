@@ -6,7 +6,7 @@ CREATE TABLE user_logins (
     PRIMARY KEY (user_id)
 );
 
-CREATE VIEW user_logins_vieww AS
+CREATE VIEW user_logins_view AS
 SELECT  user_id,
         user_login_name,
         user_login_hash

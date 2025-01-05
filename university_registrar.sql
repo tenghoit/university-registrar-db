@@ -57,20 +57,34 @@ SOURCE creates/classes_waitlist.sql;
 
 -- test data, order matters here
 SOURCE data/buildings_data.sql;
+SELECT * FROM buildings_view;
 SOURCE data/locations_data.sql;
+SELECT * FROM locations_view;
 SOURCE data/terms_data.sql;
+SELECT * FROM terms_view;
 SOURCE data/time_blocks_data.sql;
+SELECT * FROM time_blocks_view;
 SOURCE data/users_data.sql;
+SELECT * FROM users_view;
 SOURCE data/professors_data.sql;
+SELECT * FROM professors_view;
 SOURCE data/students_data.sql;
+SELECT * FROM students_view;
 SOURCE data/admins_data.sql;
+SELECT * FROM admins_view;
 SOURCE data/user_logins_data.sql;
+SELECT * FROM user_logins_view;
 
 SOURCE data/courses_data.sql;
+SELECT * FROM courses_view;
 SOURCE data/labs_data.sql;
+SELECT * FROM labs_view;
 SOURCE data/course_prerequisites_data.sql;
+SELECT * FROM course_prerequisites_view;
 SOURCE data/degrees_data.sql;
+SELECT * FROM degrees_view;
 SOURCE data/degree_requirements_data.sql;
+SELECT * FROM degree_requirements_view;
 
 -- SOURCE data/classes_data.sql;
 -- SOURCE data/class_schedules_data.sql;
