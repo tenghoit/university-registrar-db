@@ -13,7 +13,7 @@ CREATE VIEW class_schedules_view AS
 SELECT  class_id, 
         course_id
         section,
-        term_id
+        term_id,
         professor_id,
         building_name,
         room_number,

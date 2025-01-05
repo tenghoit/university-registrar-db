@@ -111,3 +111,5 @@ SELECT * FROM degree_requirements_view;
 -- SELECT * FROM classes_waitlist_view;
 -- SELECT * FROM users_view;
 
+-- tests
+SOURCE tests/location_conflict.sql;
