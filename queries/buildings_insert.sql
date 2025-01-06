@@ -1,2 +1,2 @@
 INSERT INTO buildings (building_name)
-VALUES (?);
+VALUES (:building_name);

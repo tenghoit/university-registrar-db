@@ -4,4 +4,4 @@ INSERT INTO class_schedules(
     start_time,
     end_time
 )
-VALUES (?, ?, ?, ?);
+VALUES (:class_id, :day_letter, :start_time, :end_time);

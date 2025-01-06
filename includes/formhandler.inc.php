@@ -13,7 +13,7 @@ $course_description = $_POST['course_description'];
 
 try {
     require_once "dbh.inc.php";
-    $query = file_get_contents("../queries/courses.insert.sql");
+    $query = file_get_contents("../queries/courses_insert.sql");
     $stmt = $pdo->prepare($query);
     
     $stmt->execute([
@@ -27,7 +27,8 @@ try {
     $pdo = null;
     $stmt = null;
 
-    header("Location: ../")
+    header("Location: ../php/courses.php");
+    die();
 } catch (PDOException $e) {
     die("Query Failed: " . $e->getMessage());
 }

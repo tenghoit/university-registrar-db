@@ -2,4 +2,4 @@ INSERT INTO labs (
     course_id,
     prerequisite_id
 )
-VALUES (?, ?);
+VALUES (:course_id, :prerequisite_id);

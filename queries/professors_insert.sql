@@ -1,2 +1,2 @@
 INSERT INTO professors (professor_id)
-VALUES (?);
+VALUES (:professor_id);

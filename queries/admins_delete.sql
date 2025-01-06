@@ -1,2 +1,2 @@
 DELETE FROM admins
-WHERE admin_id = ?;
+WHERE admin_id = :admin_id;

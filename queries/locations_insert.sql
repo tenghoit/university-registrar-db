@@ -3,4 +3,4 @@ INSERT INTO locations(
     room_number,
     room_capacity
 )
-VALUES (?, ?, ?);
+VALUES (:building_name, :room_number, :room_capacity);

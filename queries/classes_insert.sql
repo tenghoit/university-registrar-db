@@ -7,4 +7,4 @@ INSERT INTO classes (
     room_number,
     class_max_capacity
 )
-VALUES (?, ?, ?, ?, ?, ?, ?);
+VALUES (:course_id, :section, :term_id, :professor_id, :building_name, :room_number, :class_max_capacity);
