@@ -9,11 +9,11 @@
     <h2>Courses</h2>
     <h3>Add:</h3>
     <form action="../includes/formhandler.inc.php" method="post">
-        <input type="text" name="course_discipline" id="course_discipline">
-        <input type="text" name="course_number" id="course_number">
-        <input type="text" name="course_name" id="course_name">
-        <input type="number" name="course_credits" id="course_credits">
-        <input type="text" name="course_description" id="course_description">
+        <input type="text" name="course_discipline" placeholder="course_discipline">
+        <input type="text" name="course_number" placeholder="course_number">
+        <input type="text" name="course_name" placeholder="course_name">
+        <input type="number" name="course_credits" placeholder="course_credits">
+        <input type="text" name="course_description" placeholder="course_description">
         <button type="submit">Submit</button>
     </form>
 </body>
