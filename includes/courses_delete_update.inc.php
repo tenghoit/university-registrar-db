@@ -7,14 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
 try {
     require_once "dbh.inc.php";
-
+    
     if(isset($_POST['delete']) && !empty($_POST['selects'])){
         $query = file_get_contents("../queries/courses_delete.sql");
         $stmt = $pdo->prepare($query);
         
         // var_dump($_POST['selects']);
-        foreach($_POST['selects'] AS $course_id){
-            $stmt->bindParam(":course_id", $course_id);
+        foreach($_POST['selects'] AS $record){
+            $row = json_decode($record, true);
+
+            $stmt->bindParam(":course_id", $row['course_id']);
             $stmt->execute();
         }
     }

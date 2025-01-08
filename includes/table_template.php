@@ -18,9 +18,10 @@
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach($result AS $row){
+                    $row_data = htmlspecialchars(json_encode($row));
                     echo "<tr>";
                     echo "<td>
-                            <input type='checkbox' name='selects[]' value='" . $row['column_name'] . "'>    
+                            <input type='checkbox' name='selects[]' value='" . $row_data . "'>    
                         </td>";
                         
                     // echo "<td>" . htmlspecialchars($row['column_name']) . "</td>";
