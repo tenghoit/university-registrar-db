@@ -21,10 +21,19 @@ try {
         }
     }
 
+    if(isset($_POST['edit']) && !empty($_POST['edit'])){
+        $row = json_decode($_POST['edit'], true);
 
-    // $query = file_get_contents("../queries/");
-    // $stmt = $pdo->prepare($query);
-    // $stmt->execute();
+        if ($row) {
+            $query_string = http_build_query($row) . "&edit=1";
+    
+            header("Location: ../php/courses.php?$query_string");
+            die();
+        } else {
+            die("Invalid row data for editing.");
+        }
+    
+    }
 
     $pdo = null;
     $stmt = null;
