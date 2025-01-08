@@ -6,23 +6,271 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        body::before {
+            content: "XS";
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        /* This box class is purely used for explaining how the bootstrap grid system works. */
         .box {
-            background-color: orange;
+            background-color: lightblue;
+            border: 1px solid blue;
+            min-height: 50px;
+            font-size: 2rem;
+        }
+
+        @media (min-width: 576px) {
+            body::before {
+                content: "SM";
+            }
+        }
+
+        @media (min-width: 768px) {
+            body::before {
+                content: "MD";
+            }
+        }
+
+        @media (min-width: 992px) {
+            body::before {
+                content: "LG";
+            }
+        }
+
+        @media (min-width: 1200px) {
+            body::before {
+                content: "XL";
+            }
+        }
+
+        @media (min-width: 1400px) {
+            body::before {
+                content: "XXL";
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    
+    <br>
+    <br>
+
+    <div class="container">
         <div class="row">
-            <div class="col">
-                <div class="box">Text</div>
+            <div class="col-8">
+                <div class="box"></div>
             </div>
-            <div class="col">
-                <div class="box">Text</div>
+            <div class="col-4">
+                <div class="box"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-auto">
+                <div class="box">Text</div>
+            </div>
+            <div class="col">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-4">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="box"></div>
+            </div>
+            <div class="col-3 offset-3">
+                <div class="box"></div>
+            </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row row-cols-2 row-cols-xl-4 g-3">
+            <!-- g, gx, gy has level 1-5 -->
+            <div class="col-8">
+                <div class="box"></div>
+            </div>
+            <div class="col">
+                <div class="box"></div>
+            </div>
+            <div class="col">
+                <div class="box"></div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="box"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div class="container">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-primary">Kyle</td>
+                    <td class="table-secondary">Cook</td>
+                    <td class="table-success">27</td>
+                </tr>
+                <tr>
+                    <td class="table-danger">Sally</td>
+                    <td class="table-warning">Thorn</td>
+                    <td class="table-info">13</td>
+                </tr>
+                <tr class="table-dark">
+                    <td>Jim</td>
+                    <td>Smith</td>
+                    <td>48</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td>Kyle</td>
+                    <td>Cook</td>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <td>Sally</td>
+                    <td>Thorn</td>
+                    <td>13</td>
+                </tr>
+                <tr class="table-active">
+                    <td>Jim</td>
+                    <td>Smith</td>
+                    <td>48</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>First</th>
+                        <th>Last</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kyle</td>
+                        <td>Cook</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                        <td>27</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    
+    <div class="container">
+        <form action="">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control">
+            <label for="color" class="form-label">Color</label>
+            <input type="color" name="color" id="color" class="form-control form-control-color">
+            <label for="range">Range</label>
+            <input type="range" name="range" id="range" class="form-range">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 </body>
 </html>
