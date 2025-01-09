@@ -7,29 +7,12 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="text-bg-body">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header>
-        <nav class="navbar navbar-expand-md text-bg-primary">
-            <div class="container">
-                <a href="#" class="navbar-brand">University Registrar</a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="nav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Store</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php build_nav(); ?>
     </header>
-    <main class="text-bg-body">
+    <main class="text-bg-white">
         <div class="container">
             <div class="row">
                 <div class="col">
