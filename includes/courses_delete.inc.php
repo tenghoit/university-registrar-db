@@ -25,11 +25,21 @@ try {
         $row = json_decode($_POST['edit'], true);
 
         if ($row) {
-            $query_string = http_build_query($row) . "&edit=1";
-    
-            header("Location: ../php/courses.php?$query_string");
+            echo '<form id="redirectForm" action="../php/courses.php" method="POST">';
+            foreach ($row as $key => $value) {
+                echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+            }
+            echo '<input type="hidden" name="edit" value="1">';
+            echo '<button type="submit">submit</button>';
+            echo '</form>';
+            echo '<script>
+                    const form = document.getElementById("redirectForm");
+                    form.submit();
+                </script>';
+
             die();
-        } else {
+        }
+         else {
             die("Invalid row data for editing.");
         }
     

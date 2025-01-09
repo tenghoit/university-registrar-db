@@ -13,14 +13,15 @@ require "library.php";
     <h2>Courses</h2>
 
     <?php
-    if (isset($_GET['edit']) && $_GET['edit'] == 1) {
+    if (isset($_POST['edit']) && $_POST['edit'] == 1) {
+        echo 'echo';
         // Fetch values from the URL parameters
-        $course_id = $_GET['course_id'];
-        $course_discipline = $_GET['course_discipline'];
-        $course_number = $_GET['course_number'];
-        $course_name = $_GET['course_name'];
-        $course_credits = $_GET['course_credits'];
-        $course_description = $_GET['course_description'];
+        $course_id = $_POST['course_id'];
+        $course_discipline = $_POST['course_discipline'];
+        $course_number = $_POST['course_number'];
+        $course_name = $_POST['course_name'];
+        $course_credits = $_POST['course_credits'];
+        $course_description = $_POST['course_description'];
 
         ?>
         <h3>Edit Course:</h3>
