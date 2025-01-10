@@ -125,12 +125,21 @@ function create_table_from_query(
 
 <?php }
 
+function create_form (
+
+){
+    
+}
+
+
 function build_nav(
 
 ){ ?>
     <nav class="navbar navbar-expand-md text-bg-primary">
         <div class="container">
-            <a href="#" class="navbar-brand">University Registrar</a>
+            <a href="#" class="navbar-brand">
+                <img src="../images/university_logo.webp" alt="University Logo" height="50">
+            </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
