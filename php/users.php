@@ -32,8 +32,8 @@ require "library.php";
                         create_table_form(
                             action: "../includes/users_delete.inc.php",
                             query: "SELECT * FROM users_view",
-                            column_names: ['User ID', 'User First Name', 'User Last Name', 'User Email', 'User Street', 'User City', 'User State', 'User ZIP Code'],
-                            field_names: ["user_id", "user_first_name", "user_last_name", "user_email", "user_street", "user_city", "user_state", "user_zip_code"],
+                            column_names: ['User ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Street', 'City', 'State', 'ZIP Code'],
+                            field_names: ["user_id", "user_first_name", "user_last_name", "user_email", "user_phone_number", "user_street", "user_city", "user_state", "user_zip_code"],
                             has_edit: true
                         ); 
                         ?>
@@ -46,25 +46,25 @@ require "library.php";
                         <form action="../includes/users_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
                             <h4>Add User:</h4><br>
 
-                            <label for="user_first_name" class="form-label">User First Name</label>
+                            <label for="user_first_name" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="user_first_name" name="user_first_name" required><br>
 
-                            <label for="user_last_name" class="form-label">User Last Name</label>
+                            <label for="user_last_name" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="user_last_name" name="user_last_name" required><br>
 
-                            <label for="user_email" class="form-label">User Email</label>
+                            <label for="user_email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="user_email" name="user_email" required><br>
 
-                            <label for="user_phone_number" class="form-label">User Phone Number</label>
+                            <label for="user_phone_number" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" required><br>
 
-                            <label for="user_street" class="form-label">User Street</label>
+                            <label for="user_street" class="form-label">Street</label>
                             <input type="text" class="form-control" id="user_street" name="user_street" required><br>
 
-                            <label for="user_city" class="form-label">User City</label>
+                            <label for="user_city" class="form-label">City</label>
                             <input type="text" class="form-control" id="user_city" name="user_city" required><br>
 
-                            <label for="user_state" class="form-label">User State</label>
+                            <label for="user_state" class="form-label">State</label>
                             <select class="form-select" id="user_state" name="user_state" required>
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
@@ -119,7 +119,7 @@ require "library.php";
                                 <option value="WY">WY</option>
                             </select><br>
 
-                            <label for="user_zip_code" class="form-label">User ZIP Code</label>
+                            <label for="user_zip_code" class="form-label">ZIP Code</label>
                             <input type="text" class="form-control" id="user_zip_code" name="user_zip_code" required><br>
 
                             <button type="submit" class="btn btn-success">Submit</button>
