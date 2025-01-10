@@ -18,11 +18,13 @@ require "library.php";
     </header>
     <main class="text-bg-white my-3">
         <div class="container d-grid gap-3">
-            <div class="row">
-                <div class="col">
-                    <h1>Welcome to my website!</h1>
+            <section>
+                <div class="row">
+                    <div class="col">
+                        <h1>Welcome to my website!</h1>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
     <footer class="text-bg-dark text-center mt-auto">

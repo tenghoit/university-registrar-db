@@ -28,3 +28,13 @@ FROM    students
         ON u.user_id = student_id
         JOIN users AS professor
         ON student_advisor_id = professor.user_id;
+
+
+DROP FUNCTION IF EXISTS is_student;
+CREATE FUNCTION is_student(user_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  COUNT(*)
+    FROM    students_view
+    WHERE   student_id = user_id_input
+);

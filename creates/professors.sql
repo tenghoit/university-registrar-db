@@ -19,3 +19,13 @@ SELECT  professor_id,
 FROM    professors
         JOIN users
         ON user_id = professor_id;
+
+
+DROP FUNCTION IF EXISTS is_professor;
+CREATE FUNCTION is_professor(user_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  COUNT(*)
+    FROM    professors_view
+    WHERE   professor_id = user_id_input
+);

@@ -149,7 +149,10 @@ function build_nav(
                         <a href="" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Store</a>
+                        <a href="../php/courses.php" class="nav-link">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../php/users.php" class="nav-link">Users</a>
                     </li>              
                 </ul>
             </div>

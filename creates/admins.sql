@@ -19,3 +19,13 @@ SELECT  admin_id,
 FROM    admins
         JOIN users
         ON user_id = admin_id;
+
+
+DROP FUNCTION IF EXISTS is_admin;
+CREATE FUNCTION is_admin(user_id_input INT)
+RETURNS INT
+RETURN (
+    SELECT  COUNT(*)
+    FROM    admins_view
+    WHERE   admin_id = user_id_input
+);
