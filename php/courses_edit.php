@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header("Location: ../php/courses.php");
-    exit();
+    $reload = true;
 }
 
 if (isset($_POST['edit']) && $_POST['edit'] == 1) {
@@ -14,6 +13,10 @@ if (isset($_POST['edit']) && $_POST['edit'] == 1) {
     $course_credits = $_POST['course_credits'];
     $course_description = $_POST['course_description'];
 }else{
+    $reload = true;
+}
+
+if($reload == true){
     header("Location: ../php/courses.php");
     exit();
 }

@@ -25,7 +25,7 @@ try {
         $row = json_decode($_POST['edit'], true);
 
         if ($row) {
-            echo '<form id="redirectForm" action="../php/courses_edit.php" method="POST">';
+            echo '<form id="redirectForm" action="../php/users_edit.php" method="POST">';
             foreach ($row as $key => $value) {
                 echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
             }
