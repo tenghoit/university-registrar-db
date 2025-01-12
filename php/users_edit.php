@@ -46,7 +46,7 @@ require "library.php";
             <section>
                 <div class="row">
                     <div class="col">
-                        <h1>Courses</h1>
+                        <h1>Users</h1>
                     </div>
                 </div>
             </section>
@@ -54,55 +54,83 @@ require "library.php";
                 <div class="row">
                     <div class="col">
                         <form action="../includes/users_update.inc.php" method="post" class="text-bg-light p-3 rounded-3">
-                            <h4>Edit User:</h4><br>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>Edit User:</h4><br>
+                                </div>
+                            </div>
 
-                            <label for="user_id" class="form-label">User ID</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>" readonly><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_id" class="form-label">User ID</label>
+                                    <input type="text" class="form-control" id="user_id" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>" readonly><br>
+                                </div>
+                            </div>
 
-                            <label for="user_first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="user_first_name" name="user_first_name" value="<?php echo htmlspecialchars($user_first_name); ?>" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_first_name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="user_first_name" name="user_first_name" value="<?php echo htmlspecialchars($user_first_name); ?>" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_last_name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="user_last_name" name="user_last_name" value="<?php echo htmlspecialchars($user_last_name); ?>" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="user_last_name" name="user_last_name" value="<?php echo htmlspecialchars($user_last_name); ?>" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="user_email" name="user_email" value="<?php echo htmlspecialchars($user_email); ?>" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_phone_number" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" value="<?php echo htmlspecialchars($user_phone_number); ?>" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="user_email" name="user_email" value="<?php echo htmlspecialchars($user_email); ?>" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_street" class="form-label">Street</label>
+                                    <input type="text" class="form-control" id="user_street" name="user_street" value="<?php echo htmlspecialchars($user_street); ?>" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_phone_number" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" value="<?php echo htmlspecialchars($user_phone_number); ?>" required><br>
-
-                            <label for="user_street" class="form-label">Street</label>
-                            <input type="text" class="form-control" id="user_street" name="user_street" value="<?php echo htmlspecialchars($user_street); ?>" required><br>
-
-                            <label for="user_city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="user_city" name="user_city" value="<?php echo htmlspecialchars($user_city); ?>" required><br>
-
-                            <label for="user_state" class="form-label">State</label>
-                            <select class="form-select" id="user_state" name="user_state" required>
-                                <?php 
-                                // Define an array of state abbreviations
-                                $states = [
-                                    "AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL",
-                                    "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA",
-                                    "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "NE", "NH",
-                                    "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI",
-                                    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"
-                                ];
-
-                                // Loop through the states array to create options
-                                foreach ($states as $state) {
-                                    // Check if the current state matches the selected state
-                                    $selected = ($user_state === $state) ? "selected" : "";
-                                    echo "<option value=" . $state . " " . $selected . ">" . $state . "</option>";
-                                }
-                                ?>
-                            </select><br>
-
-
-                            <label for="user_zip_code" class="form-label">ZIP Code</label>
-                            <input type="text" class="form-control" id="user_zip_code" name="user_zip_code" value="<?php echo htmlspecialchars($user_zip_code); ?>" required><br>
-
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="user_city" name="user_city" value="<?php echo htmlspecialchars($user_city); ?>" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_state" class="form-label">State</label>
+                                    <select class="form-select" id="user_state" name="user_state" required>
+                                        <?php 
+                                        $states = [
+                                            "AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL",
+                                            "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA",
+                                            "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "NE", "NH",
+                                            "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI",
+                                            "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"
+                                        ];
+                                        foreach ($states as $state) {
+                                            $selected = ($user_state === $state) ? "selected" : "";
+                                            echo "<option value='$state' $selected>$state</option>";
+                                        }
+                                        ?>
+                                    </select><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_zip_code" class="form-label">ZIP Code</label>
+                                    <input type="text" class="form-control" id="user_zip_code" name="user_zip_code" value="<?php echo htmlspecialchars($user_zip_code); ?>" required><br>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>

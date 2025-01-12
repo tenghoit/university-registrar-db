@@ -44,85 +44,113 @@ require "library.php";
                 <div class="row">
                     <div class="col">
                         <form action="../includes/users_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
-                            <h4>Add User:</h4><br>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>Add User:</h4><br>
+                                </div>
+                            </div>
 
-                            <label for="user_first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="user_first_name" name="user_first_name" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_first_name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="user_first_name" name="user_first_name" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_last_name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="user_last_name" name="user_last_name" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="user_last_name" name="user_last_name" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="user_email" name="user_email" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_phone_number" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="user_email" name="user_email" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_street" class="form-label">Street</label>
+                                    <input type="text" class="form-control" id="user_street" name="user_street" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_phone_number" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" required><br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="user_city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="user_city" name="user_city" required><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_state" class="form-label">State</label>
+                                    <select class="form-select" id="user_state" name="user_state" required>
+                                        <option value="AL">AL</option>
+                                        <option value="AK">AK</option>
+                                        <option value="AR">AR</option>
+                                        <option value="AZ">AZ</option>
+                                        <option value="CA">CA</option>
+                                        <option value="CO">CO</option>
+                                        <option value="CT">CT</option>
+                                        <option value="DC">DC</option>
+                                        <option value="DE">DE</option>
+                                        <option value="FL">FL</option>
+                                        <option value="GA">GA</option>
+                                        <option value="HI">HI</option>
+                                        <option value="IA">IA</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IL">IL</option>
+                                        <option value="IN">IN</option>
+                                        <option value="KS">KS</option>
+                                        <option value="KY">KY</option>
+                                        <option value="LA">LA</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MD">MD</option>
+                                        <option value="ME">ME</option>
+                                        <option value="MI">MI</option>
+                                        <option value="MN">MN</option>
+                                        <option value="MO">MO</option>
+                                        <option value="MS">MS</option>
+                                        <option value="MT">MT</option>
+                                        <option value="NC">NC</option>
+                                        <option value="NE">NE</option>
+                                        <option value="NH">NH</option>
+                                        <option value="NJ">NJ</option>
+                                        <option value="NM">NM</option>
+                                        <option value="NV">NV</option>
+                                        <option value="NY">NY</option>
+                                        <option value="ND">ND</option>
+                                        <option value="OH">OH</option>
+                                        <option value="OK">OK</option>
+                                        <option value="OR">OR</option>
+                                        <option value="PA">PA</option>
+                                        <option value="RI">RI</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SD">SD</option>
+                                        <option value="TN">TN</option>
+                                        <option value="TX">TX</option>
+                                        <option value="UT">UT</option>
+                                        <option value="VT">VT</option>
+                                        <option value="VA">VA</option>
+                                        <option value="WA">WA</option>
+                                        <option value="WI">WI</option>
+                                        <option value="WV">WV</option>
+                                        <option value="WY">WY</option>
+                                    </select><br>
+                                </div>
+                                <div class="col">
+                                    <label for="user_zip_code" class="form-label">ZIP Code</label>
+                                    <input type="text" class="form-control" id="user_zip_code" name="user_zip_code" required><br>
+                                </div>
+                            </div>
 
-                            <label for="user_street" class="form-label">Street</label>
-                            <input type="text" class="form-control" id="user_street" name="user_street" required><br>
-
-                            <label for="user_city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="user_city" name="user_city" required><br>
-
-                            <label for="user_state" class="form-label">State</label>
-                            <select class="form-select" id="user_state" name="user_state" required>
-                                <option value="AL">AL</option>
-                                <option value="AK">AK</option>
-                                <option value="AR">AR</option>
-                                <option value="AZ">AZ</option>
-                                <option value="CA">CA</option>
-                                <option value="CO">CO</option>
-                                <option value="CT">CT</option>
-                                <option value="DC">DC</option>
-                                <option value="DE">DE</option>
-                                <option value="FL">FL</option>
-                                <option value="GA">GA</option>
-                                <option value="HI">HI</option>
-                                <option value="IA">IA</option>
-                                <option value="ID">ID</option>
-                                <option value="IL">IL</option>
-                                <option value="IN">IN</option>
-                                <option value="KS">KS</option>
-                                <option value="KY">KY</option>
-                                <option value="LA">LA</option>
-                                <option value="MA">MA</option>
-                                <option value="MD">MD</option>
-                                <option value="ME">ME</option>
-                                <option value="MI">MI</option>
-                                <option value="MN">MN</option>
-                                <option value="MO">MO</option>
-                                <option value="MS">MS</option>
-                                <option value="MT">MT</option>
-                                <option value="NC">NC</option>
-                                <option value="NE">NE</option>
-                                <option value="NH">NH</option>
-                                <option value="NJ">NJ</option>
-                                <option value="NM">NM</option>
-                                <option value="NV">NV</option>
-                                <option value="NY">NY</option>
-                                <option value="ND">ND</option>
-                                <option value="OH">OH</option>
-                                <option value="OK">OK</option>
-                                <option value="OR">OR</option>
-                                <option value="PA">PA</option>
-                                <option value="RI">RI</option>
-                                <option value="SC">SC</option>
-                                <option value="SD">SD</option>
-                                <option value="TN">TN</option>
-                                <option value="TX">TX</option>
-                                <option value="UT">UT</option>
-                                <option value="VT">VT</option>
-                                <option value="VA">VA</option>
-                                <option value="WA">WA</option>
-                                <option value="WI">WI</option>
-                                <option value="WV">WV</option>
-                                <option value="WY">WY</option>
-                            </select><br>
-
-                            <label for="user_zip_code" class="form-label">ZIP Code</label>
-                            <input type="text" class="form-control" id="user_zip_code" name="user_zip_code" required><br>
-
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
                         </form>
 
                     </div>

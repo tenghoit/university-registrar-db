@@ -7,65 +7,73 @@ function create_table_form (
     array $field_names,
     bool $has_edit
 ) { ?>
-    <form action="<?php echo $action; ?>" method="post">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th>Select</th>
-                        <?php
-                        foreach($column_names AS $column_name){
-                            echo "<th>" . $column_name . "</th>";
-                        }
-
-                        if($has_edit == true){
-                            echo "<th>Action</th>";
-                        }
-                        ?>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <?php
-                    try {
-                        require_once "../includes/dbh.inc.php";
-                        // $query_input = $query;
-                        $stmt = $pdo->prepare($query);    
-                        $stmt->execute();
-                        
-                        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        
-                        if(!empty($result)){
-
-                            foreach($result AS $row){
-                                $row_data = htmlspecialchars(json_encode($row));
-                                echo "<tr>";
-                                echo "<td><input type='checkbox' class='form-check-input' name='selects[]' value='" . $row_data . "'></td>";
-                                
-                                foreach($field_names AS $field_name){
-                                    echo "<td>" . htmlspecialchars($row[$field_name]) . "</td>";
+    <form action="<?php echo $action; ?>" method="post" class="text-bg-light p-3 rounded-3">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <?php
+                                foreach($column_names AS $column_name){
+                                    echo "<th>" . $column_name . "</th>";
                                 }
-            
+
                                 if($has_edit == true){
-                                    echo "<td><button type='submit' class='btn btn-warning' name='edit' value='" . $row_data . "'>Edit</button></td>";
+                                    echo "<th>Action</th>";
                                 }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php
+                            try {
+                                require_once "../includes/dbh.inc.php";
+                                $stmt = $pdo->prepare($query);    
+                                $stmt->execute();
                                 
-                                echo "</tr>";
-                            }
-                            
-                        }
+                                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                
+                                if(!empty($result)){
 
-                        $pdo = null;
-                        $stmt = null;
+                                    foreach($result AS $row){
+                                        $row_data = htmlspecialchars(json_encode($row));
+                                        echo "<tr>";
+                                        echo "<td><input type='checkbox' class='form-check-input' name='selects[]' value='" . $row_data . "'></td>";
+                                        
+                                        foreach($field_names AS $field_name){
+                                            echo "<td>" . htmlspecialchars($row[$field_name]) . "</td>";
+                                        }
                     
-                    } catch (PDOException $e) {
-                        die("Query Failed: " . $e->getMessage());
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                                        if($has_edit == true){
+                                            echo "<td><button type='submit' class='btn btn-warning' name='edit' value='" . $row_data . "'>Edit</button></td>";
+                                        }
+                                        
+                                        echo "</tr>";
+                                    }
+                                    
+                                }else{
+                                    echo "<tr><td colspan='" . (count($column_names) + ($has_edit ? 1 : 0)) . "' class='text-center'>No records found</td></tr>";
+                                }
 
-        <button type="submit" class='btn btn-danger' name="delete">Delete Selected</button>
+                                $pdo = null;
+                                $stmt = null;
+                            
+                            } catch (PDOException $e) {
+                                die("Query Failed: " . $e->getMessage());
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class='btn btn-danger' name="delete">Delete Selected</button>
+            </div>
+        </div>
     </form>
 
 <?php }
@@ -153,7 +161,10 @@ function build_nav(
                     </li>
                     <li class="nav-item">
                         <a href="../php/users.php" class="nav-link">Users</a>
-                    </li>              
+                    </li>
+                    <li class="nav-item">
+                        <a href="../php/locations.php" class="nav-link">Locations</a>
+                    </li>                 
                 </ul>
             </div>
         </div>
