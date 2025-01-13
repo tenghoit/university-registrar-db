@@ -29,7 +29,7 @@ function create_table_form (
                         <tbody class="table-group-divider">
                             <?php
                             try {
-                                require_once "../includes/dbh.inc.php";
+                                require "../includes/dbh.inc.php";
                                 $stmt = $pdo->prepare($query);    
                                 $stmt->execute();
                                 
@@ -143,10 +143,11 @@ function create_form (
 function build_nav(
 
 ){ ?>
-    <nav class="navbar navbar-expand-md text-bg-primary justify-content-end">
+    <nav class="navbar navbar-expand-md navbar-body justify-content-end">
         <div class="container">
             <a href="#" class="navbar-brand">
-                <img src="../images/university_logo.webp" alt="University Logo" height="50">
+                <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
+                University
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -168,6 +169,36 @@ function build_nav(
                 </ul>
             </div>
         </div>
+    </nav>
+<?php }
+
+function build_vertical_nav(){ 
+?>
+    <nav class="navbar navbar-expand-md bg-primary flex-column col-auto">
+        <a href="#" class="navbar-brand">
+            <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
+            University
+        </a>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../php/courses.php" class="nav-link">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../php/users.php" class="nav-link">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../php/locations.php" class="nav-link">Locations</a>
+                </li>                 
+            </ul>
+        </div>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
     </nav>
 <?php }
 

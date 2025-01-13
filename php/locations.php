@@ -87,7 +87,7 @@ require "library.php";
                                 <div class="col">
                                     <?php
                                     try {
-                                        require_once "../includes/dbh.inc.php";
+                                        require "../includes/dbh.inc.php";
                                         $query = "SELECT * FROM buildings_view";
                                         $stmt = $pdo->prepare($query);
 
