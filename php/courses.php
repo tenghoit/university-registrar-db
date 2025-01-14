@@ -14,14 +14,63 @@ require "library.php";
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header>
-        
+        <nav class="navbar navbar-dark bg-dark justify-content-end ">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
+                    University
+                </a>
+                <form action="#" method="post">
+                    <input type="search" class="form-control" name="search" id="search" placeholder="Search...">
+                </form>
+                <button class="navbar-toggler d-lg-none" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../php/courses.php" class="nav-link">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../php/users.php" class="nav-link">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../php/locations.php" class="nav-link">Locations</a>
+                        </li>                 
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
     </header>
 
     <div class="container-fluid">
         <div class="row">
-            <?php build_vertical_nav(); ?>
-            <div class="col">
-                <main>
+            <nav id="sidebar" class="col-auto text-bg-dark text-center collapse d-lg-block">
+                <div class="d-flex flex-column p-3">
+                    <h3>Menu</h3>
+                    <div class="collapse show" id="menuItems">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="#">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <main class="col p-3 gap-3">
                     <section>
                         <div class="row">
                             <div class="col">
@@ -73,10 +122,8 @@ require "library.php";
                         </div>
                     </section>
                 </main>
-            </div>
         </div>
     </div>
-
 
     <footer class="text-bg-dark text-center mt-auto">
         <div class="container">

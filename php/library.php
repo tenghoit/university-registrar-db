@@ -144,7 +144,7 @@ function build_nav(
 
 ){ ?>
     <nav class="navbar navbar-expand-md navbar-body justify-content-end">
-        <div class="container">
+        <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
                 University
@@ -155,7 +155,7 @@ function build_nav(
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="../php/courses.php" class="nav-link">Courses</a>
