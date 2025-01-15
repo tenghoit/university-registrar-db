@@ -14,7 +14,7 @@ require "library.php";
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header>
-        <nav class="navbar navbar-dark bg-dark justify-content-end ">
+        <nav class="navbar navbar-dark bg-dark justify-content-end">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">
                     <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
@@ -42,7 +42,7 @@ require "library.php";
                         </li>                 
                     </ul>
                 </div>
-                
+                 
             </div>
         </nav>
     </header>
