@@ -143,7 +143,7 @@ function create_form (
 function build_nav(
 
 ){ ?>
-    <nav class="navbar navbar-expand-md navbar-body justify-content-end">
+    <nav class="navbar navbar-expand-md navbar-primary justify-content-end">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
