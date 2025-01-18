@@ -1,5 +1,5 @@
 <?php
-require "library.php";
+require_once "library.php";
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ require "library.php";
     <main class="container ">
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col my-3">
                     <h1>Courses</h1>
                 </div>
             </div>
@@ -28,7 +28,7 @@ require "library.php";
 
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col my-3">
                     <?php 
                     create_table_form(
                         action: "../includes/courses_delete.inc.php",
@@ -44,7 +44,7 @@ require "library.php";
             
         <section>
             <div class="row">
-                <div class="col">
+                <div class="col my-3">
                     <form action="../includes/courses_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
                         <h4>Add Course:</h4><br>
 
@@ -70,12 +70,8 @@ require "library.php";
         </section>
     </main>
 
-    <footer class="container-fluid text-bg-dark text-center mt-auto">
-        <div class="row">
-            <div class="col">
-                <p class="p-3">&copy; 2025 University. All rights reserved.</p>
-            </div>
-        </div>
+    <footer>
+        <?php build_footer(); ?>
     </footer>
 </body>
 </html>

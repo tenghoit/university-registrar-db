@@ -29,7 +29,7 @@ function create_table_form (
                         <tbody class="table-group-divider">
                             <?php
                             try {
-                                require "../includes/dbh.inc.php";
+                                require_once "../includes/dbh.inc.php";
                                 $stmt = $pdo->prepare($query);    
                                 $stmt->execute();
                                 
@@ -57,7 +57,6 @@ function create_table_form (
                                     echo "<tr><td colspan='" . (count($column_names) + ($has_edit ? 1 : 0)) . "' class='text-center'>No records found</td></tr>";
                                 }
 
-                                $pdo = null;
                                 $stmt = null;
                             
                             } catch (PDOException $e) {
@@ -120,7 +119,6 @@ function create_table_from_query(
                         
                     }
     
-                    $pdo = null;
                     $stmt = null;
                 
                 } catch (PDOException $e) {
@@ -133,17 +131,20 @@ function create_table_from_query(
 
 <?php }
 
-function create_form (
-
-){
-    
+function build_footer(){
+    ?>
+    <div class="container-fluid text-bg-dark text-center mt-auto">
+        <div class="row">
+            <div class="col">
+                <p class="p-3">&copy; 2025 University. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <?php
 }
 
-
-function build_nav(
-
-){ ?>
-    <nav class="navbar navbar-expand-md navbar-primary justify-content-end">
+function build_nav(){ ?>
+    <nav class="navbar navbar-expand-md navbar-primary justify-content-end border-bottom">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
