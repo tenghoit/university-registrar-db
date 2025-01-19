@@ -78,14 +78,8 @@ require "library.php";
             </section>
         </div>
     </main>
-    <footer class="text-bg-dark text-center mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="p-3">&copy; 2025 University. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
+    <footer>
+        <?php build_footer(); ?>
     </footer>
 </body>
 </html>
