@@ -17,10 +17,10 @@ require_once "library.php";
         <?php build_nav(); ?>
     </header>
 
-    <main class="container ">
+    <main class="container">
         <section>
             <div class="row">
-                <div class="col my-3">
+                <div class="col m-3">
                     <h1>Courses</h1>
                 </div>
             </div>
@@ -28,9 +28,10 @@ require_once "library.php";
 
         <section>
             <div class="row">
-                <div class="col my-3">
+                <div class="col m-3">
                     <?php 
                     create_table_form(
+                        mode: "delete",
                         action: "../includes/courses_delete.inc.php",
                         query: "SELECT * FROM courses_view",
                         column_names: ["Course ID", "Course Discipline", "Course Number", "Course Name", "Course Credits", "Course Description"],
@@ -44,7 +45,7 @@ require_once "library.php";
             
         <section>
             <div class="row">
-                <div class="col my-3">
+                <div class="col m-3">
                     <form action="../includes/courses_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
                         <h4>Add Course:</h4><br>
 

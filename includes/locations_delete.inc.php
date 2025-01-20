@@ -18,7 +18,6 @@ try {
 
             $stmt->bindParam(":building_name", $row['building_name']);
             $stmt->bindParam(":room_number", $row['room_number']);
-            $stmt->bindParam(":room_capacity", $row['room_capacity']);
             $stmt->execute();
         }
     }

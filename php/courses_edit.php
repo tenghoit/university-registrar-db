@@ -21,7 +21,7 @@ if($reload == true){
     exit();
 }
 
-require "library.php";
+require_once "library.php";
 
 ?>
 <!DOCTYPE html>
@@ -38,45 +38,43 @@ require "library.php";
     <header>
         <?php build_nav(); ?>
     </header>
-    <main class="text-bg-white my-3">
-        <div class="container d-grid gap-3">
-            <section>
-                <div class="row">
-                    <div class="col">
-                        <h1>Courses</h1>
-                    </div>
+    <main class="container">
+        <section>
+            <div class="row">
+                <div class="col m-3">
+                    <h1>Courses</h1>
                 </div>
-            </section>
-            <section>
-                <div class="row">
-                    <div class="col">
-                        <form action="../includes/courses_update.inc.php" method="post" class="text-bg-light p-3 rounded-3">
-                            <h4>Edit Course:</h4><br>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col m-3">
+                    <form action="../includes/courses_update.inc.php" method="post" class="text-bg-light p-3 rounded-3">
+                        <h4>Edit Course:</h4><br>
 
-                            <label for="course_id" class="form-label">Course ID</label>
-                            <input type="text" class="form-control" id="course_id" name="course_id" value="<?php echo htmlspecialchars($course_id); ?>" readonly><br>
+                        <label for="course_id" class="form-label">Course ID</label>
+                        <input type="text" class="form-control" id="course_id" name="course_id" value="<?php echo htmlspecialchars($course_id); ?>" readonly><br>
 
-                            <label for="course_discipline" class="form-label">Course Discipline</label>
-                            <input type="text" class="form-control" id="course_discipline" name="course_discipline" value="<?php echo htmlspecialchars($course_discipline); ?>" required><br>
+                        <label for="course_discipline" class="form-label">Course Discipline</label>
+                        <input type="text" class="form-control" id="course_discipline" name="course_discipline" value="<?php echo htmlspecialchars($course_discipline); ?>" required><br>
 
-                            <label for="course_number" class="form-label">Course Number</label>
-                            <input type="text" class="form-control" id="course_number" name="course_number" value="<?php echo htmlspecialchars($course_number); ?>" required><br>
+                        <label for="course_number" class="form-label">Course Number</label>
+                        <input type="text" class="form-control" id="course_number" name="course_number" value="<?php echo htmlspecialchars($course_number); ?>" required><br>
 
-                            <label for="course_name" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="course_name" name="course_name" value="<?php echo htmlspecialchars($course_name); ?>" required><br>
+                        <label for="course_name" class="form-label">Course Name</label>
+                        <input type="text" class="form-control" id="course_name" name="course_name" value="<?php echo htmlspecialchars($course_name); ?>" required><br>
 
-                            <label for="course_credits" class="form-label">Course Credits</label>
-                            <input type="number" class="form-control" id="course_credits" name="course_credits" value="<?php echo htmlspecialchars($course_credits); ?>" required><br>
+                        <label for="course_credits" class="form-label">Course Credits</label>
+                        <input type="number" class="form-control" id="course_credits" name="course_credits" value="<?php echo htmlspecialchars($course_credits); ?>" required><br>
 
-                            <label for="course_description" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="course_description" name="course_description" value="<?php echo htmlspecialchars($course_description); ?>" required><br>
+                        <label for="course_description" class="form-label">Course Description</label>
+                        <input type="text" class="form-control" id="course_description" name="course_description" value="<?php echo htmlspecialchars($course_description); ?>" required><br>
 
-                            <button type="submit" class="btn btn-warning">Submit</button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                    </form>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
     <footer>
         <?php build_footer(); ?>

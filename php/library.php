@@ -1,6 +1,7 @@
 <?php
 
 function create_table_form (
+    string $mode,
     string $action,
     string $query,
     array $column_names,
@@ -29,8 +30,8 @@ function create_table_form (
                         <tbody class="table-group-divider">
                             <?php
                             try {
-                                require_once "../includes/dbh.inc.php";
-                                $stmt = $pdo->prepare($query);    
+                                require "../includes/dbh.inc.php";
+                                $stmt = $pdo->prepare($query);  
                                 $stmt->execute();
                                 
                                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -57,6 +58,7 @@ function create_table_form (
                                     echo "<tr><td colspan='" . (count($column_names) + ($has_edit ? 1 : 0)) . "' class='text-center'>No records found</td></tr>";
                                 }
 
+                                $pdo = null;
                                 $stmt = null;
                             
                             } catch (PDOException $e) {
@@ -70,7 +72,13 @@ function create_table_form (
         </div>
         <div class="row">
             <div class="col">
-                <button type="submit" class='btn btn-danger' name="delete">Delete Selected</button>
+                <?php
+                if($mode == 'delete'){
+                    echo "<button type='submit' class='btn btn-danger' name='delete'>Delete Selected</button>";
+                }elseif($mode == 'add'){
+                    echo "<button type='submit' class='btn btn-success' name='add'>Add Selected</button>";
+                }
+                ?>
             </div>
         </div>
     </form>
@@ -98,7 +106,7 @@ function create_table_from_query(
             <tbody class="table-group-divider">
                 <?php
                 try {
-                    require_once "../includes/dbh.inc.php";
+                    require "../includes/dbh.inc.php";
                     // $query_input = $query;
                     $stmt = $pdo->prepare($query);    
                     $stmt->execute();
@@ -118,7 +126,8 @@ function create_table_from_query(
                         }
                         
                     }
-    
+
+                    $pdo = null;
                     $stmt = null;
                 
                 } catch (PDOException $e) {
