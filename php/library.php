@@ -234,6 +234,9 @@ function build_nav(){ ?>
                     </li>               
                     <li class="nav-item">
                         <a href="../php/degree_requirements.php" class="nav-link">Degree Requirements</a>
+                    </li>   
+                    <li class="nav-item">
+                        <a href="../php/classes.php" class="nav-link">Classes</a>
                     </li>               
                 </ul>
             </div>

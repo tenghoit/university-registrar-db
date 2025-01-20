@@ -65,22 +65,22 @@ require_once "library.php";
                         <div class="row">
                             <div class="col">
                                 <?php
-                                    build_select_input(
-                                        query: "SELECT * FROM courses_view",
-                                        select_label: "Primary Course",
-                                        select_id: "primary_course",
-                                        option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
-                                    );
+                                build_select_input(
+                                    query: "SELECT * FROM courses_view",
+                                    select_label: "Primary Course",
+                                    select_id: "primary_course",
+                                    option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
+                                );
                                 ?>
                             </div>
                             <div class="col">
                                 <?php
-                                    build_select_input(
-                                        query: "SELECT * FROM courses_view",
-                                        select_label: "Prerequisite Course",
-                                        select_id: "prerequisite_course",
-                                        option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
-                                    );
+                                build_select_input(
+                                    query: "SELECT * FROM courses_view",
+                                    select_label: "Prerequisite Course",
+                                    select_id: "prerequisite_course",
+                                    option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
+                                );
                                 ?>
                             </div>
                         </div>
