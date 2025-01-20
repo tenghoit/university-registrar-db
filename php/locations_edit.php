@@ -57,22 +57,15 @@ require_once "library.php";
                                 <label for="building_name" class="form-label">Building Name</label>
                                 <input type="text" class="form-control" id="building_name" name="building_name" value="<?php echo htmlspecialchars($building_name); ?>" readonly><br>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col">
                                 <label for="room_number" class="form-label">Room Number</label>
                                 <input type="text" class="form-control" id="room_number" name="room_number" value="<?php echo htmlspecialchars($room_number); ?>" readonly><br>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col">
                                 <label for="room_capacity" class="form-label">Room Capacity</label>
                                 <input type="number" class="form-control" id="room_capacity" name="room_capacity" value="<?php echo htmlspecialchars($room_capacity); ?>" required><br>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-warning">Submit</button>

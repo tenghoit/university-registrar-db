@@ -1,5 +1,5 @@
 <?php
-require "library.php";
+require_once "library.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +16,21 @@ require "library.php";
     <header>
         <?php build_nav(); ?>
     </header>
-    <main class="text-bg-white my-3">
-        <div class="container d-grid gap-3">
-            <section>
-                <div class="row">
-                    <div class="col">
-                        <h1>Welcome to my website!</h1>
-                    </div>
+    <main class="container">
+        <section>
+            <div class="row">
+                <div class="col m-3">
+                    <h1>Title</h1>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col m-3">
+                    
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <?php build_footer(); ?>

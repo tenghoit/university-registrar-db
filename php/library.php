@@ -140,6 +140,12 @@ function create_table_from_query(
 
 <?php }
 
+function build_select_input(
+
+){
+    
+}
+
 function build_footer(){
     ?>
     <div class="container-fluid text-bg-dark text-center mt-auto">
@@ -169,6 +175,9 @@ function build_nav(){ ?>
                     </li>
                     <li class="nav-item">
                         <a href="../php/courses.php" class="nav-link">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../php/course_prerequisites.php" class="nav-link">Course Prerequisites</a>
                     </li>
                     <li class="nav-item">
                         <a href="../php/users.php" class="nav-link">Users</a>
