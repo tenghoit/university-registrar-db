@@ -9,7 +9,7 @@ require_once "library.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Course Prerequisites</title>
+    <title>Prerequisites</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@ require_once "library.php";
         <section>
             <div class="row">
                 <div class="col m-3">
-                    <h1>Course Prerequisites</h1>
+                    <h1>Prerequisites</h1>
                 </div>
             </div>
             <div class="row">
@@ -59,7 +59,7 @@ require_once "library.php";
                     <form action="../includes/course_prerequisites_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
                         <div class="row">
                             <div class="col">
-                                <h4>Add Course Prerequisite</h4>
+                                <h4>Add Prerequisite</h4>
                             </div>
                         </div>
                         <div class="row">

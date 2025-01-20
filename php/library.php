@@ -215,7 +215,7 @@ function build_nav(){ ?>
                         <a href="../php/courses.php" class="nav-link">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../php/course_prerequisites.php" class="nav-link">Course Prerequisites</a>
+                        <a href="../php/course_prerequisites.php" class="nav-link">Prerequisites</a>
                     </li>
                     <li class="nav-item">
                         <a href="../php/users.php" class="nav-link">Users</a>

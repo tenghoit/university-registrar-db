@@ -9,7 +9,7 @@ try {
     require_once "dbh.inc.php";
     
     if(isset($_POST['delete']) && !empty($_POST['selects'])){
-        $query = file_get_contents("../queries/buildings_delete.sql");
+        $query = file_get_contents("../queries/course_prerequisites_delete.sql");
         $stmt = $pdo->prepare($query);
         
         // var_dump($_POST['selects']);
