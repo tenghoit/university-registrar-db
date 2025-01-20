@@ -229,6 +229,12 @@ function build_nav(){ ?>
                     <li class="nav-item">
                         <a href="../php/time_blocks.php" class="nav-link">Time Blocks</a>
                     </li>               
+                    <li class="nav-item">
+                        <a href="../php/degrees.php" class="nav-link">Degrees</a>
+                    </li>               
+                    <li class="nav-item">
+                        <a href="../php/degree_requirements.php" class="nav-link">Degree Requirements</a>
+                    </li>               
                 </ul>
             </div>
         </div>
