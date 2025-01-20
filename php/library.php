@@ -222,6 +222,9 @@ function build_nav(){ ?>
                     </li>
                     <li class="nav-item">
                         <a href="../php/locations.php" class="nav-link">Locations</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a href="../php/terms.php" class="nav-link">Terms</a>
                     </li>                 
                 </ul>
             </div>
