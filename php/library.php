@@ -141,9 +141,47 @@ function create_table_from_query(
 <?php }
 
 function build_select_input(
-
+    string $query,
+    string $select_label,
+    string $select_id,
+    array $option_label_formatting
 ){
-    
+    try {
+        require "../includes/dbh.inc.php";
+        $stmt = $pdo->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "<label for='" . $select_id . "' class='form-label'>" . $select_label . "</label>";
+        echo "<select name='" . $select_id . "' id='" . $select_id . "' class='form-select'>";
+
+        foreach($result AS $row){
+
+            $row_data = htmlspecialchars(json_encode($row));
+
+            $option_label = "";
+
+            foreach ($option_label_formatting as $label) {
+                if (preg_match('/[a-zA-Z]/', $label) && isset($row[$label])) {
+                    $option_label .= htmlspecialchars($row[$label]); // Append formatted value
+                } else {
+                    $option_label .= htmlspecialchars($label); // Append static character (e.g., a space or delimiter)
+                }
+            }
+
+            echo "<option value='" . $row_data . "'>" . $option_label . "</option>";
+        }
+
+        echo "</select><br>";
+
+        $pdo = null;
+        $stmt = null;
+
+    } catch (PDOException $e) {
+        die("Query Failed: " . $e->getMessage());
+    }
 }
 
 function build_footer(){
@@ -188,36 +226,6 @@ function build_nav(){ ?>
                 </ul>
             </div>
         </div>
-    </nav>
-<?php }
-
-function build_vertical_nav(){ 
-?>
-    <nav class="navbar navbar-expand-md bg-primary flex-column col-auto">
-        <a href="#" class="navbar-brand">
-            <!-- <img src="../images/university_logo.webp" alt="University Logo" height="50"> -->
-            University
-        </a>
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav flex-column">
-                <li class="nav-item">
-                    <a href="" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../php/courses.php" class="nav-link">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../php/users.php" class="nav-link">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../php/locations.php" class="nav-link">Locations</a>
-                </li>                 
-            </ul>
-        </div>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
     </nav>
 <?php }
 
