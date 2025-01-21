@@ -16,4 +16,5 @@ VALUES  ('M', 'Monday'),
 CREATE VIEW days_view AS
 SELECT  day_letter,
         day_name
-FROM    days_of_the_week;
+FROM    days_of_the_week
+ORDER BY FIELD(day_letter, 'M', 'T', 'W', 'R', 'F', 'S', 'U');

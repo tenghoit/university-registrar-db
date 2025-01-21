@@ -34,42 +34,73 @@ require_once "library.php";
                         query: "SELECT * FROM class_schedules_view",
                         column_names: [
                             "Class ID", 
-                            "Course ID", 
-                            "Course Discipline", 
-                            "Course Number", 
-                            "Section", 
+                            "Class Code", 
                             "Course Name", 
-                            "Term ID", 
                             "Term Name", 
-                            "Professor ID", 
-                            "Professor First Name", 
-                            "Professor Last Name", 
-                            "Building Name", 
-                            "Room Number", 
+                            "Professor Name", 
+                            "Location",  
                             "Day",
                             "Start Time",
                             "End Time"
                         ],
                         field_names: [
                             "class_id", 
-                            "course_id", 
-                            "course_discipline", 
-                            "course_number", 
-                            "section", 
+                            "class_code", 
                             "course_name", 
-                            "term_id", 
                             "term_name", 
-                            "professor_id", 
-                            "professor_first_name", 
-                            "professor_last_name", 
-                            "building_name", 
-                            "room_number",
+                            "professor_name", 
+                            "location",
                             "day_letter",
                             "start_time",
                             "end_time"],
                         has_edit: true
                     ); 
                     ?>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col m-3">
+                    <form action="../includes/class_schedules_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
+                        <h4>Add Class Schedule:</h4><br>
+
+                        <div class="row">
+                            <div class="col">
+                                <?php
+                                build_select_input(
+                                    query: "SELECT * FROM classes_view",
+                                    select_label: "Class",
+                                    select_id: "class",
+                                    required: true,
+                                    option_label_formatting: ["class_code", ": ", "course_name", ", ", "term_name"]
+                                );
+                                ?>
+                            </div>
+                            <div class="col">
+                                <?php
+                                build_select_input(
+                                    query: "SELECT * FROM days_view",
+                                    select_label: "Day",
+                                    select_id: "day",
+                                    required: true,
+                                    option_label_formatting: ["day_name"]
+                                );
+                                ?>
+                            </div>
+                            <div class="col">
+                                <?php
+                                build_select_input(
+                                    query: "SELECT * FROM time_blocks_view",
+                                    select_label: "Time Block",
+                                    select_id: "time_block",
+                                    required: true,
+                                    option_label_formatting: ["start_time", " - ", "end_time"]
+                                );
+                                ?>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
