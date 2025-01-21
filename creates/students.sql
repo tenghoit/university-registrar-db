@@ -13,6 +13,7 @@ CREATE VIEW students_view AS
 SELECT  student_id,
         u.user_first_name             AS student_first_name,
         u.user_last_name              AS student_last_name,
+        CONCAT(u.user_first_name, ' ', u.user_last_name) AS student_name,
         u.user_email                  AS student_email,
         u.user_phone_number           AS student_phone_number,
         u.user_street                 AS student_street,

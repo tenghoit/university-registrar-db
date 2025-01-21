@@ -12,17 +12,25 @@ CREATE TABLE class_schedules(
 CREATE VIEW class_schedules_view AS
 SELECT  class_id, 
         course_id
+        course_discipline,
+        course_number,
         section,
+        class_code,
+        course_name,
         term_id,
+        term_name,
         professor_id,
+        professor_first_name,
+        professor_last_name,
+        professor_name,
         building_name,
         room_number,
-        class_max_capacity,
+        location,
         day_letter,
         start_time,
         end_time
 FROM    class_schedules
-        JOIN classes
+        JOIN classes_view
         USING (class_id);
 
 

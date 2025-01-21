@@ -11,11 +11,13 @@ CREATE VIEW classes_waitlist_view AS
 SELECT      student_id,
             student_first_name,
             student_last_name,
+            student_name,
             class_id,
             course_id,
             course_discipline, 
             course_number,
             section,
+            class_code,
             course_name,
             term_id,
             term_name

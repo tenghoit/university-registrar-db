@@ -10,6 +10,7 @@ CREATE VIEW professors_view AS
 SELECT  professor_id,
         user_first_name     AS professor_first_name,
         user_last_name      AS professor_last_name,
+        CONCAT(user_first_name, ' ', user_last_name) AS professor_name,
         user_email          AS professor_email,
         user_phone_number   AS professor_phone_number,
         user_street         AS professor_street,

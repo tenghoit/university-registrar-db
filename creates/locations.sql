@@ -9,6 +9,7 @@ CREATE TABLE locations (
 CREATE VIEW locations_view AS
 SELECT      building_name,
             room_number,
+            CONCAT(building_name, ' ', room_number) AS location,
             room_capacity
 FROM        locations
 ORDER BY    building_name ASC,

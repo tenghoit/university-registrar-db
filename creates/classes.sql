@@ -18,6 +18,7 @@ CREATE TABLE classes (
 
 CREATE VIEW classes_view AS
 SELECT      class_id, 
+            CONCAT(course_discipline, ' ', course_number, '-', section) AS class_code,
             course_id,
             course_discipline,
             course_number,
@@ -28,8 +29,10 @@ SELECT      class_id,
             professor_id,
             professor_first_name,
             professor_last_name,
+            professor_name,
             building_name,
             room_number,
+            CONCAT(building_name, ' ', room_number) AS 'location',
             class_max_capacity
 FROM        classes
             JOIN courses_view
