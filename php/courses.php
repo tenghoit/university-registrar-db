@@ -49,20 +49,32 @@ require_once "library.php";
                     <form action="../includes/courses_insert.inc.php" method="post" class="text-bg-light p-3 rounded-3">
                         <h4>Add Course:</h4><br>
 
-                        <label for="course_discipline" class="form-label">Course Discipline</label>
-                        <input type="text" class="form-control" id="course_discipline" name="course_discipline" required><br>
-
-                        <label for="course_number" class="form-label">Course Number</label>
-                        <input type="text" class="form-control" id="course_number" name="course_number" required><br>
-
-                        <label for="course_name" class="form-label">Course Name</label>
-                        <input type="text" class="form-control" id="course_name" name="course_name" required><br>
-
-                        <label for="course_credits" class="form-label">Course Credits</label>
-                        <input type="number" class="form-control" id="course_credits" name="course_credits" required><br>
-
-                        <label for="course_description" class="form-label">Course Description</label>
-                        <input type="text" class="form-control" id="course_description" name="course_description" required><br>
+                        <div class="row">
+                            <div class="col">
+                                <label for="course_discipline" class="form-label">Course Discipline</label>
+                                <input type="text" class="form-control" id="course_discipline" name="course_discipline" required><br>
+                            </div>
+                            <div class="col">
+                                <label for="course_number" class="form-label">Course Number</label>
+                                <input type="text" class="form-control" id="course_number" name="course_number" required><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="course_name" class="form-label">Course Name</label>
+                                <input type="text" class="form-control" id="course_name" name="course_name" required><br>
+                            </div>
+                            <div class="col-2">
+                                <label for="course_credits" class="form-label">Course Credits</label>
+                                <input type="number" class="form-control" id="course_credits" name="course_credits" required><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="course_description" class="form-label">Course Description</label>
+                                <input type="text" class="form-control" id="course_description" name="course_description" required><br>
+                            </div>
+                        </div>
 
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>

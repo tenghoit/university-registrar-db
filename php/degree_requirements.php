@@ -68,6 +68,7 @@ require_once "library.php";
                                     query: "SELECT * FROM degrees_view",
                                     select_label: "Degree",
                                     select_id: "degree",
+                                    required: true,
                                     option_label_formatting: ["degree_name", " ", "degree_type"]
                                 );
                             ?>
@@ -78,6 +79,7 @@ require_once "library.php";
                                     query: "SELECT * FROM courses_view",
                                     select_label: "Course",
                                     select_id: "course",
+                                    required: true,
                                     option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
                                 );
                             ?>

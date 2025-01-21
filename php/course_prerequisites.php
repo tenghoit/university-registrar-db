@@ -69,6 +69,7 @@ require_once "library.php";
                                     query: "SELECT * FROM courses_view",
                                     select_label: "Primary Course",
                                     select_id: "primary_course",
+                                    required: true,
                                     option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
                                 );
                                 ?>
@@ -79,6 +80,7 @@ require_once "library.php";
                                     query: "SELECT * FROM courses_view",
                                     select_label: "Prerequisite Course",
                                     select_id: "prerequisite_course",
+                                    required: true,
                                     option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
                                 );
                                 ?>

@@ -46,7 +46,7 @@ require_once "library.php";
                         <div class="row">
                             <div class="col">
                                 <label for="building_name" class="form-label">Building Name</label>
-                                <input type="text" class="form-control" name="building_name" id="building_name"><br>
+                                <input type="text" class="form-control" name="building_name" id="building_name" required><br>
                             </div>
                         </div>
                         <div class="row">
@@ -87,39 +87,22 @@ require_once "library.php";
                         <div class="row">
                             <div class="col">
                                 <?php
-                                try {
-                                    require "../includes/dbh.inc.php";
-                                    $query = "SELECT * FROM buildings_view";
-                                    $stmt = $pdo->prepare($query);
-
-                                    $stmt->execute();
-
-                                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                                    echo "<label for='building_name' class='form-label'>Building Name</label>";
-                                    echo "<select name='building_name' id='building_name' class='form-select'>";
-
-                                    foreach($result AS $row){
-                                        echo "<option value='" . $row['building_name'] . "'>" . $row['building_name'] . "</option>";
-                                    }
-
-                                    echo "</select><br>";
-
-                                    $pdo = null;
-                                    $stmt = null;
-
-                                } catch (PDOException $e) {
-                                    die("Query Failed: " . $e->getMessage());
-                                }
+                                build_select_input(
+                                    query: "SELECT * FROM buildings_view",
+                                    select_label: "Building",
+                                    select_id: "building",
+                                    required: true,
+                                    option_label_formatting: ["building_name"]
+                                );
                                 ?>
                             </div>
                             <div class="col">
                                 <label for="room_number" class="form-label">Room Number</label>
-                                <input type="text" class="form-control" name="room_number" id="room_number"><br>
+                                <input type="text" class="form-control" name="room_number" id="room_number" required><br>
                             </div>
                             <div class="col">
                                 <label for="room_capacity" class="form-label">Room Capacity</label>
-                                <input type="number" class="form-control" name="room_capacity" id="room_capacity"><br>
+                                <input type="number" class="form-control" name="room_capacity" id="room_capacity" required><br>
                             </div>
                         </div>
                         <div class="row">

@@ -66,7 +66,7 @@ require "library.php";
                                 <label for="user_email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="user_email" name="user_email" required><br>
                             </div>
-                            <div class="col">
+                            <div class="col-4">
                                 <label for="user_phone_number" class="form-label">Phone Number</label>
                                 <input type="tel" class="form-control" id="user_phone_number" name="user_phone_number" required><br>
                             </div>

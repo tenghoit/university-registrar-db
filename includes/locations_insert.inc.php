@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit();
 }
 
-$building_name = $_POST['building_name'];
+$building = json_decode($_POST['building'], true);
 $room_number = $_POST['room_number'];
 $room_capacity = $_POST['room_capacity'];
 
@@ -14,7 +14,7 @@ try {
     $query = file_get_contents("../queries/locations_insert.sql");
     $stmt = $pdo->prepare($query);
 
-    $stmt->bindParam(":building_name", $building_name);
+    $stmt->bindParam(":building_name", $building['building_name']);
     $stmt->bindParam(":room_number", $room_number);
     $stmt->bindParam(":room_capacity", $room_capacity);
     

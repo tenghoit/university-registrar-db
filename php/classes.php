@@ -93,6 +93,7 @@ require_once "library.php";
                                     query: "SELECT * FROM courses_view",
                                     select_label: "Course",
                                     select_id: "course",
+                                    required: true,
                                     option_label_formatting: ["course_discipline", " ", "course_number", " - ", "course_name"]
                                 );
                                 ?>
@@ -109,6 +110,7 @@ require_once "library.php";
                                     query: "SELECT * FROM terms_view",
                                     select_label: "Term",
                                     select_id: "term",
+                                    required: true,
                                     option_label_formatting: ["term_name"]
                                 );
                                 ?>
@@ -119,6 +121,7 @@ require_once "library.php";
                                     query: "SELECT * FROM professors_view",
                                     select_label: "Professor",
                                     select_id: "professor",
+                                    required: true,
                                     option_label_formatting: ["professor_first_name", " ", "professor_first_name"]
                                 );
                                 ?>
@@ -131,6 +134,7 @@ require_once "library.php";
                                     query: "SELECT * FROM locations_view",
                                     select_label: "Location",
                                     select_id: "location",
+                                    required: true,
                                     option_label_formatting: ["building_name", " ", "room_number"]
                                 );
                                 ?>

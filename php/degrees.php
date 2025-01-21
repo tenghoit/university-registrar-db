@@ -57,6 +57,7 @@ require_once "library.php";
                                     query: "SELECT * FROM degree_types",
                                     select_label: "Degree Type",
                                     select_id: "degree_type",
+                                    required: true,
                                     option_label_formatting: ["degree_type"]
                                 );
                                 ?>

@@ -144,8 +144,12 @@ function build_select_input(
     string $query,
     string $select_label,
     string $select_id,
-    array $option_label_formatting
+    bool $required,
+    array $option_label_formatting,
+    ?array $existing_value = null
 ){
+    $required_label = $required ? "required" : "";
+
     try {
         require "../includes/dbh.inc.php";
         $stmt = $pdo->prepare($query);
@@ -155,7 +159,11 @@ function build_select_input(
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<label for='" . $select_id . "' class='form-label'>" . $select_label . "</label>";
-        echo "<select name='" . $select_id . "' id='" . $select_id . "' class='form-select'>";
+        echo "<select name='" . $select_id . "' id='" . $select_id . "' class='form-select' " . $required_label . ">";
+
+        if($existing_value == null){
+            echo "<option value='' disabled selected>Select Option</option>";
+        }
 
         foreach($result AS $row){
 
@@ -171,7 +179,20 @@ function build_select_input(
                 }
             }
 
-            echo "<option value='" . $row_data . "'>" . $option_label . "</option>";
+            $selected = "";
+            if ($existing_value) {
+                foreach ($existing_value as $key => $value) {
+                    if (isset($row[$key]) && $row[$key] == $value) {
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                        break;
+                    }
+                }
+            }
+
+
+            echo "<option value='" . $row_data . "' " . $selected . ">" . $option_label . "</option>";
         }
 
         echo "</select><br>";
