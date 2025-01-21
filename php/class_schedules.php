@@ -100,6 +100,8 @@ require_once "library.php";
                                 ?>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
             </div>

@@ -232,11 +232,12 @@ function build_nav(){ ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="../php/courses.php" class="nav-link">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../php/course_prerequisites.php" class="nav-link">Prerequisites</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../php/courses.php">Courses</a>
+                            <a class="dropdown-item" href="../php/course_prerequisites.php">Prerequisites</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="../php/users.php" class="nav-link">Users</a>
@@ -250,18 +251,20 @@ function build_nav(){ ?>
                     <li class="nav-item">
                         <a href="../php/time_blocks.php" class="nav-link">Time Blocks</a>
                     </li>               
-                    <li class="nav-item">
-                        <a href="../php/degrees.php" class="nav-link">Degrees</a>
-                    </li>               
-                    <li class="nav-item">
-                        <a href="../php/degree_requirements.php" class="nav-link">Degree Requirements</a>
-                    </li>   
-                    <li class="nav-item">
-                        <a href="../php/classes.php" class="nav-link">Classes</a>
-                    </li>    
-                    <li class="nav-item">
-                        <a href="../php/class_schedules.php" class="nav-link">Class Schedules</a>
-                    </li>               
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Degrees</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../php/degrees.php">Degrees</a>
+                            <a class="dropdown-item" href="../php/degree_requirements.php">Degree Requirements</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Classes</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../php/classes.php">Classes</a>
+                            <a class="dropdown-item" href="../php/class_schedules.php">Class Schedules</a>
+                        </div>
+                    </li>       
                 </ul>
             </div>
         </div>
