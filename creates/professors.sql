@@ -13,7 +13,7 @@ SELECT  professor_id,
         CONCAT(user_first_name, ' ', user_last_name) AS professor_name,
         user_email          AS professor_email,
         user_phone_number   AS professor_phone_number,
-        user_street         AS professor_street,
+        user_address        AS professor_address,
         user_city           AS professor_city,
         user_state          AS professor_state,
         user_zip_code       AS professor_zip_code
