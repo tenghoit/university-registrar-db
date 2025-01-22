@@ -32,8 +32,8 @@ require "library.php";
                         mode: "delete",
                         action: "../includes/users_delete.inc.php",
                         query: "SELECT * FROM users_view",
-                        column_names: ['User ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Street', 'City', 'State', 'ZIP Code'],
-                        field_names: ["user_id", "user_first_name", "user_last_name", "user_email", "user_phone_number", "user_street", "user_city", "user_state", "user_zip_code"],
+                        column_names: ['User ID', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Address', 'City', 'State', 'ZIP Code'],
+                        field_names: ["user_id", "user_first_name", "user_last_name", "user_email", "user_phone_number", "user_address", "user_city", "user_state", "user_zip_code"],
                         has_edit: true
                     ); 
                     ?>
@@ -74,8 +74,8 @@ require "library.php";
 
                         <div class="row">
                             <div class="col">
-                                <label for="user_street" class="form-label">Street</label>
-                                <input type="text" class="form-control" id="user_street" name="user_street" required><br>
+                                <label for="user_address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="user_address" name="user_address" required><br>
                             </div>
                         </div>
 

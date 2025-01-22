@@ -10,6 +10,7 @@ CREATE VIEW student_degrees_view AS
 SELECT  student_id
         student_first_name,
         student_last_name,
+        student_name,
         degree_id,
         degree_name,
         degree_type

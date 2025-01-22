@@ -1,7 +1,4 @@
-INSERT INTO students (
-    student_id,  
-    student_advisor_id
-)
+INSERT INTO students (student_id)
 VALUES
-    (3, 1),
-    (4, 2);
+    (3),
+    (4);

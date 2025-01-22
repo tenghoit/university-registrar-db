@@ -21,6 +21,8 @@ SELECT 'Building professors table';
 SOURCE creates/professors.sql;
 SELECT 'Building students table';
 SOURCE creates/students.sql;
+SELECT 'Building student_advisors table';
+SOURCE creates/student_advisors.sql;
 SELECT 'Building admins table';
 SOURCE creates/admins.sql;
 SELECT 'Building user_logins table';

@@ -11,7 +11,7 @@ if (isset($_POST['edit']) && $_POST['edit'] == 1) {
     $user_last_name = $_POST['user_last_name'];
     $user_email = $_POST['user_email'];
     $user_phone_number = $_POST['user_phone_number'];
-    $user_street = $_POST['user_street'];
+    $user_address = $_POST['user_address'];
     $user_city = $_POST['user_city'];
     $user_state = $_POST['user_state'];
     $user_zip_code = $_POST['user_zip_code'];
@@ -90,8 +90,8 @@ require_once "library.php";
 
                         <div class="row">
                             <div class="col">
-                                <label for="user_street" class="form-label">Street</label>
-                                <input type="text" class="form-control" id="user_street" name="user_street" value="<?php echo htmlspecialchars($user_street); ?>" required><br>
+                                <label for="user_address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="user_address" name="user_address" value="<?php echo htmlspecialchars($user_address); ?>" required><br>
                             </div>
                         </div>
 

@@ -15,6 +15,7 @@ CREATE VIEW users_view AS
 SELECT  user_id,
         user_first_name,
         user_last_name,
+        CONCAT(user_first_name, ' ', user_last_name) AS user_name,
         user_email,
         user_phone_number,
         user_address,
