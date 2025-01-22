@@ -239,8 +239,12 @@ function build_nav(){ ?>
                             <a class="dropdown-item" href="../php/course_prerequisites.php">Prerequisites</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a href="../php/users.php" class="nav-link">Users</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Users</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../php/users.php">Users</a>
+                            <a class="dropdown-item" href="../php/students.php">Students</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="../php/locations.php" class="nav-link">Locations</a>
