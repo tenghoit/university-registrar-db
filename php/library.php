@@ -267,6 +267,7 @@ function build_nav(){ ?>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../php/classes.php">Classes</a>
                             <a class="dropdown-item" href="../php/class_schedules.php">Class Schedules</a>
+                            <a class="dropdown-item" href="../php/student_class_history.php">Student Class History</a>
                         </div>
                     </li>       
                 </ul>
