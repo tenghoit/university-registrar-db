@@ -55,7 +55,7 @@ function create_table_form (
                                     }
                                     
                                 }else{
-                                    echo "<tr><td colspan='" . (count($column_names) + ($has_edit ? 1 : 0)) . "' class='text-center'>No records found</td></tr>";
+                                    echo "<tr><td colspan='" . (count($column_names) + 1 + ($has_edit ? 1 : 0)) . "' class='text-center'>No records found</td></tr>";
                                 }
 
                                 $pdo = null;
@@ -244,6 +244,7 @@ function build_nav(){ ?>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../php/users.php">Users</a>
                             <a class="dropdown-item" href="../php/students.php">Students</a>
+                            <a class="dropdown-item" href="../php/student_advisors.php">Student Advisors</a>
                         </div>
                     </li>
                     <li class="nav-item">
