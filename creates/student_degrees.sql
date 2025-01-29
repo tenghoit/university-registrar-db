@@ -7,7 +7,7 @@ CREATE TABLE student_degrees (
 );
 
 CREATE VIEW student_degrees_view AS
-SELECT  student_id
+SELECT  student_id,
         student_first_name,
         student_last_name,
         student_name,

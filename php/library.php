@@ -260,6 +260,7 @@ function build_nav(){ ?>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../php/degrees.php">Degrees</a>
                             <a class="dropdown-item" href="../php/degree_requirements.php">Degree Requirements</a>
+                            <a class="dropdown-item" href="../php/student_degrees.php">Student Degrees</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
