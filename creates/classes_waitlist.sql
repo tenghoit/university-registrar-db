@@ -32,5 +32,16 @@ ORDER BY    term_id DESC,
             section ASC;
 
 
+DROP FUNCTION IF EXISTS check_waitlist;
+CREATE FUNCTION check_waitlist(class_id_input INT)
+RETURNS INT
+RETURN(
+    SELECT  COUNT(*)
+    FROM    classes_waitlist
+    WHERE   class_id = class_id_input
+    ORDER BY waitlist_timestamp ASC
+);
 
+DROP FUNCTION IF EXISTS admit_student_from_waitlist;
+CREATE FUNCTION admit_student_from_waitlist(stude)
             
