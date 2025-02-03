@@ -42,6 +42,26 @@ RETURN(
     ORDER BY waitlist_timestamp ASC
 );
 
-DROP FUNCTION IF EXISTS admit_student_from_waitlist;
-CREATE FUNCTION admit_student_from_waitlist(stude)
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS manage_waitlist;
+CREATE PROCEDURE manage_waitlist(class_id_input INT)
+BEGIN
+
+    @available_capacity = find_available_class_capacity(class_id_input);
+    IF (@available_capacity <= 0) THEN
+        RETURN;
+    END IF;
+
+    @students_in_waitlist = check_waitlist(class_id_input);
+    IF (@students_in_waitlist = 0) THEN
+        RETURN;
+    END IF;
+
+
+
+
+END$$
+DELIMITER ;
+
             
