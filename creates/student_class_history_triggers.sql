@@ -68,3 +68,14 @@ BEGIN
 
 END; $$
 DELIMITER ;       
+
+
+DELIMITER $$
+CREATE TRIGGER student_class_history_delete
+AFTER DELETE ON student_class_history FOR EACH ROW
+BEGIN
+
+    manage_waitlist(OLD.class_id);
+
+END; $$
+DELIMITER ;    

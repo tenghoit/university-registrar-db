@@ -42,6 +42,17 @@ RETURN(
     ORDER BY waitlist_timestamp ASC
 );
 
+DROP FUNCTION IF EXISTS get_student_in_waitlist;
+CREATE FUNCTION get_student_in_waitlist(class_id_input INT)
+RETURNS INT
+RETURN(
+    SELECT  student_id
+    FROM    classes_waitlist
+    WHERE   class_id = class_id_input
+    ORDER BY waitlist_timestamp ASC
+    LIMIT 1
+);
+
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS manage_waitlist;
@@ -58,10 +69,28 @@ BEGIN
         RETURN;
     END IF;
 
+    @current_student_id = get_student_in_waitlist(class_id_input);
 
+    START TRANSACTION;
 
+    DELETE FROM classes_waitlist WHERE class_id = class_id_input AND student_id = current_student_id;
+
+    INSERT INTO student_class_history (student_id, class_id) VALUES (current_student_id, class_id_input);
+
+    COMMIT;
 
 END$$
 DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER classes_waitlist_insert
+AFTER INSERT ON classes_waitlist FOR EACH ROW
+BEGIN
+
+    manage_waitlist(OLD.class_id);
+
+END; $$
+DELIMITER ;    
 
             
