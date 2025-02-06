@@ -236,6 +236,7 @@ function build_nav(){ ?>
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../php/courses.php">Courses</a>
+                            <a class="dropdown-item" href="../php/labs.php">Labs</a>
                             <a class="dropdown-item" href="../php/course_prerequisites.php">Prerequisites</a>
                         </div>
                     </li>
